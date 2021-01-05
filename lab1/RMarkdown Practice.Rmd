@@ -1,0 +1,39 @@
+---
+title: "RMarkdown Practice"
+author: "Seona Patel"
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1. Test out the arithmetic capabilities of R; experiment by doing addition, subtraction, multiplication, and division.  
+```{r}
+4+3
+5-8
+7*3
+4/2
+```
+
+
+2. Go back to your "RMarkdown Practice" file and experiment with titles, text, and syntax.  
+
+## This is my [email](mailto: seopatel@ucdavis.edu) 
+
+## This is [Google](http://www.google.com) 
+# This is my title
+## This is my title 
+
+
+3. Copy and paste the following two pieces of code into the document (include the gray code "chunks").
+```{r message=FALSE, warning=FALSE}
+#install.packages("tidyverse")
+library("tidyverse")
+```
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+    geom_bar()
+```
