@@ -5,5 +5,5 @@ Welcome! This repository includes homework, labs, and notes for BIS 15L at UC Da
 [Seona Patel](seopatel@ucdavis.edu)
 
 ### Thank You!
-Don't forget to leave a ⭐ if you found this useful.  
+Don't forget to leave a ⭐  if you found this useful.  
 
