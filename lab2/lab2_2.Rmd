@@ -25,16 +25,18 @@ Please take 5-8 minutes to check over your answers to HW 1 in your group. If you
 In addition to classes of data, R also organizes data in different ways. These are called data structures and include vectors, lists, matrices, data frames, and factors. For now, we will focus on `vectors`.  
 
 ## Vectors
-Vectors are a common way of organizing data in R.  We create vectors using the `c` command. The `c` stands for concatenate.  
+Vectors are a common way of organizing data in R.  We create vectors using the `c` command. The `c` stands for concatenate.  An ordered list of numbers or text. 
 
 A numeric vector.
 ```{r}
 my_vector <- c(10, 20, 30)
+class(my_vector)
 ```
 
 A character vector. Characters always have quotes and may be referred to as "strings".
 ```{r}
 days_of_the_week <- c("Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday")
+days_of_the_week 
 ```
 
 A convenient trick for creating a vector is to generate a sequence of numbers.
@@ -46,7 +48,7 @@ my_vector_sequence
 ## Identifying vector elements
 We can use `[]` to pull out elements in a vector. We just need to specify their position in the vector; i.e. day 3 is Wednesday.
 ```{r}
-days_of_the_week[3]
+days_of_the_week[8]
 ```
 
 ## Practice
@@ -54,17 +56,24 @@ Work through these examples and make adjustments to the values to experiment.
 
 2. Evaluate all numerics in `my_vector_sequence` to determine which has a value of 15.  
 ```{r}
+my_vector_sequence == 15
 
 ```
 
 3. We can use operators such as <, >, ==, <==, etc. Show all values in `my_vector_sequence` that are less than 10.  How about less than or equal to 10?  
 ```{r}
+my_vector_sequence <= 10
 
 ```
+```{r}
+
+my_vector_sequence[my_vector_sequence <= 10]
+```
+
 
 4. If you use `[]` then you only get the values, not the logical evaluation of the entire vector. Experiment with this by adjusting the chunk below.    
 ```{r}
-my_vector_sequence[my_vector_sequence <= 10]
+yet_another_new_vector <- my_vector_sequence[my_vector_sequence <= 15]
 ```
 
 ## Data Matrices
@@ -83,6 +92,26 @@ Deathly_Hallows_2 <- c(381.0, 960.5)
 ```
 
 Create a new object called `box_office`. Here we are using the `c` command to combine the vectors into one.
+data	
+an optional data vector (including a list or expression vector). Non-atomic classed R objects are coerced by as.vector and all attributes discarded.
+
+nrow	
+the desired number of rows.
+
+ncol	
+the desired number of columns.
+
+byrow	
+logical. If FALSE (the default) the matrix is filled by columns, otherwise the matrix is filled by rows.
+
+dimnames	
+A dimnames attribute for the matrix: NULL or a list of length 2 giving the row and column names respectively. An empty list is treated as NULL, and a list of length one as row names. The list can be named, and the list names will be used as names for the dimensions.
+
+x	
+an R object.
+
+...	
+additional arguments to be passed to or from methods.
 ```{r}
 box_office <- c(Philosophers_Stone, Chamber_of_Secrets, Prisoner_of_Azkaban, Goblet_of_Fire, Order_of_the_Phoenix, Half_Blood_Prince, Deathly_Hallows_1, Deathly_Hallows_2)
 box_office
@@ -90,7 +119,9 @@ box_office
 
 Create `harry_potter_matrix` using the `matrix()` command. We need to tell R how to organize the `box_office` vector using the `nrow` and `byrow` commands.
 ```{r}
-harry_potter_matrix <- matrix(box_office, nrow = 8, byrow = T)
+harry_potter_matrix <- matrix(box_office, nrow = 8, byrow = T) # byrow is boolean 
+# matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL)
+?matrix
 harry_potter_matrix
 ```
 ## Name the rows and columns
@@ -132,16 +163,25 @@ And even add a new column to reflect this calculation. `cbind()` adds columns.
 all_harry_potter_matrix <- cbind(harry_potter_matrix, global)
 all_harry_potter_matrix
 ```
+```{r}
+Deathly_Hallows_3 <- c(38.0, 96.0)
+```
+```{r}
+all_harry_potter_matrix <- rbind(harry_potter_matrix, Deathly_Hallows_3)
+all_harry_potter_matrix
+```
 
 ## Practice
 1. What are the total earnings for the US and non-US regions?  
 ```{r}
-
+total <- colSums(all_harry_potter_matrix)
+total
 ```
 
 2. Add this information to the data matrix. Hint: you are adding a row, not a column.  
 ```{r}
-
+all_harry_potter_matrix <- rbind(all_harry_potter_matrix, total)
+all_harry_potter_matrix
 ```
 
 ## A few Extras
@@ -150,7 +190,7 @@ The same methods of selecting elements in a vector apply to data matrices. We us
 harry_potter_matrix[2,1]
 ```
 
-Adding a colon `:` selects the specified elements in a column.  
+Adding a colon `:` selects the specified elements in a COLUMN.  
 ```{r}
 harry_potter_matrix[1:4]
 ```
@@ -158,6 +198,8 @@ harry_potter_matrix[1:4]
 We can also select values in an entire row or column. This can be useful for calculations. Here we calculate the mean of the entire second column. 
 ```{r}
 non_us_earnings <- all_harry_potter_matrix[ ,2]
+non_us_earnings #non_us_earnings is a vector
+# its better to have all variables of one class in a vector
 mean(non_us_earnings)
 ```
 
