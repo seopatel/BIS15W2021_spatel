@@ -98,8 +98,8 @@ temperature_matrix
 
 
 ```r
-Average <- rowMeans(temperature_matrix)
-Average
+Average_Temperature <- rowMeans(temperature_matrix)
+Average_Temperature
 ```
 
 ```
@@ -113,20 +113,20 @@ Average
 `cbind()` adds columns and `rbind()` adds rows
 
 ```r
-temperature_matrix <- cbind(temperature_matrix, Average)
+temperature_matrix <- cbind(temperature_matrix, Average_Temperature)
 temperature_matrix
 ```
 
 ```
-##                   Jill Steve Susan  Average
-## Bluebell Spring  36.25 35.40 35.30 35.65000
-## Opal Spring      35.15 35.35 33.35 34.61667
-## Riverside Spring 30.70 29.65 29.20 29.85000
-## Too Hot Spring   39.70 40.05 38.65 39.46667
-## Mystery Spring   31.85 31.40 29.30 30.85000
-## Emerald Spring   30.20 30.65 29.75 30.20000
-## Black Spring     32.90 32.50 32.80 32.73333
-## Pearl Spring     36.80 36.45 33.15 35.46667
+##                   Jill Steve Susan Average_Temperature
+## Bluebell Spring  36.25 35.40 35.30            35.65000
+## Opal Spring      35.15 35.35 33.35            34.61667
+## Riverside Spring 30.70 29.65 29.20            29.85000
+## Too Hot Spring   39.70 40.05 38.65            39.46667
+## Mystery Spring   31.85 31.40 29.30            30.85000
+## Emerald Spring   30.20 30.65 29.75            30.20000
+## Black Spring     32.90 32.50 32.80            32.73333
+## Pearl Spring     36.80 36.45 33.15            35.46667
 ```
 
 8. Show Susan's value for Opal Spring only.

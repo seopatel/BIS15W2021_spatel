@@ -63,14 +63,14 @@ temperature_matrix
 6. Calculate the mean temperature of all three springs.
 
 ```{r}
-Average <- rowMeans(temperature_matrix)
-Average
+Average_Temperature <- rowMeans(temperature_matrix)
+Average_Temperature
 ```
 
 7. Add this as a new column in the data matrix.  
 `cbind()` adds columns and `rbind()` adds rows
 ```{r}
-temperature_matrix <- cbind(temperature_matrix, Average)
+temperature_matrix <- cbind(temperature_matrix, Average_Temperature)
 temperature_matrix
 ```
 
