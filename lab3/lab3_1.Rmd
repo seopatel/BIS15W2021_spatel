@@ -18,13 +18,15 @@ output:
 4. Change data classes of columns in the data frame.  
 5. Write your data frame to a csv file!  
 
+
 ## Load tidyverse
+`library()` calls tidyverse, so we are picking up the tidyverse package and putting it into the computer's memory.
 ```{r message=FALSE, warning=FALSE}
 library("tidyverse")
 ```
 
 ## Data Frames
-During lab 2, you learned how to work with vectors and data matrices. Today we will organize the vectors into a new type of data structure called a **data frame**. The data frame is the most common way to organize data within R. You can think of a data frame as similar to a spreadsheet. A data frame can store data of many different classes.  
+During lab 2, you learned how to work with vectors and data matrices. Today we will organize the vectors into a new type of data structure called a **data frame**. The data frame is the most common way to organize data within R. You can think of a data frame as similar to a spreadsheet. A data frame can store data of many different classes. (while matrices usually store data of only one class).
 
 Let's build separate vectors that include length (in), weight (oz), and sex of three [ruby-throated hummingbirds](https://www.audubon.org/field-guide/bird/ruby-throated-hummingbird).  
 ```{r}
@@ -33,7 +35,7 @@ Length <- c(3.2, 3.7, 3.4)
 Weight <- c(2.9, 4.0, 3.1)
 ```
 
-Here we combine our three vectors to create a data frame with the function `data.frame()`.
+Here we combine our three vectors to create a data frame with the function `data.frame()`. You can see here that the vectors in a data frame are the columns. 
 ```{r}
 hbirds <- data.frame(Sex, Length, Weight)
 hbirds
@@ -58,6 +60,7 @@ What are the dimensions of the `hbirds` data frame? The `dim()` and `str()` comm
 dim(hbirds)
 ```
 
+`str()` is structure. It is commonly used by R programmers.
 ```{r}
 str(hbirds)
 ```
@@ -88,6 +91,9 @@ hbirds[ ,3]
 We can also select values in an entire column using the `$` sign. This can be useful for calculations. Here we calculate the mean of all of the birds weights. 
 ```{r}
 w <- hbirds$weight_oz
+w
+```
+```{r}
 mean(w)
 ```
 
@@ -98,6 +104,7 @@ new_bird <- c("Female", 3.6, 3.9)
 new_bird
 ```
 
+`rbind(where you're adding, what you're adding)`
 ```{r}
 hbirds<- rbind(hbirds, new_bird)
 hbirds
@@ -113,7 +120,10 @@ hbirds
 ## Writing Data to File
 We should save our hbirds data frame so we can use it again later! There are many ways to save data in R, here we write our data frame to a csv file. We use  `row.names = FALSE` to avoid row numbers from printing out. 
 ```{r}
-write.csv(hbirds, "hbirds_data.csv", row.names = FALSE)
+write.csv(hbirds, "data/hbirds_data.csv", row.names = FALSE)
+```
+```{r}
+getwd()
 ```
 
 ## Practice
@@ -126,27 +136,30 @@ spring <- c("Buckeye", "Buckeye", "Buckeye", "Benton", "Benton", "Benton", "Trav
 
 1. Build a data frame called `hsprings` with the above data. Name the temperature column `temp_C`. Print out the data frame.  
 ```{r}
-
+hsprings <- data.frame(temp, name, spring)
+hsprings
 ```
 
 2. Change the column titled `name` to `scientist`, leave the other column names the same. Print out the data frame names.  
 ```{r}
-
+hsprings <- data.frame(temp, scientist = name, spring)
+names(hsprings)
 ```
 
 3. Our scientists forgot to record the depth data for each spring. Here it is as a vector, add it as a new column called depth_ft: `c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)`. Print out the data frame.
 ```{r}
-
+hsprings$depth_ft <- c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)
+hsprings
 ```
 
 4. Calculate the mean temperature of all of the temperature measurements.
-```{r}
-
+```{r} 
+mean(hsprings$temp)
 ```
 
 5. Save your hot springs data as a `.csv` file! Do not allow row names. 
 ```{r}
-
+write.csv(hsprings, "data/hsprings_data.csv", row.names = FALSE)
 ```
 
 ## That's it! Take a break and I will see you on Zoom!  
