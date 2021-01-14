@@ -28,19 +28,19 @@ V. M. Savage and G. B. West. A quantitative, theoretical framework for understan
 
 2. Store these data into a new data frame `sleep`.
 ```{r}
-sleep <- msleep
+sleep <- data.frame(msleep)
 ```
 
 3. What are the dimensions of this data frame (variables and observations)? How do you know? Please show the *code* that you used to determine this below.  
 
-83 observations of 11 variables
+I used the `glimpse()` function to look at the data and saw that there are 83 observations of 11 variables. 
 ```{r}
-dim(sleep)
+glimpse(sleep)
 ```
 
 4. Are there any NAs in the data? How did you determine this? Please show your code. 
 
-Yes, there are some NAs in vore, conservation, sleep_rem, sleep_cycle, brainwt, etc. I figured this out by using the `glimpse()` function.
+Yes, there are some NAs in vore, conservation, sleep_rem, sleep_cycle, brainwt, etc. I figured this out by using the `glimpse()` function and seeing a few NAs in the observations. Another way to do this is using `is.na(sleep)`. If the output contains "TRUE", then there's an NA in the data. 
 ```{r}
 glimpse(sleep)
 ```
@@ -72,41 +72,27 @@ large
 ```
 
 8. What is the mean weight for both the small and large mammals?
+
 ```{r}
-small_weights <- small$bodywt
-small_weights
-```
-Find the mean of small mammals:
-```{r}
-mean(small_weights)
+small_animal_weights <- small$bodywt
+mean(small_animal_weights)
 ```
 
 ```{r}
-large_weights <- large$bodywt
-large_weights
-```
-Find the mean of large mammals:
-```{r}
-mean(large_weights)
+large_animal_weights <- large$bodywt
+mean(large_animal_weights)
 ```
 
 9. Using a similar approach as above, do large or small animals sleep longer on average?  
 
-On average, small animals sleep for 12.65833 hours while large animals sleep for 3.3 hours total. This means the small animals sleep longer on average. 
+On average, small animals sleep for 12.65 hours while large animals sleep for 3.3 hours total. This means the small animals sleep longer on average. 
 ```{r}
 small_sleep_total <- small$sleep_total
-small_sleep_total 
-```
-```{r}
 mean(small_sleep_total)
 ```
 
-
 ```{r}
 large_sleep_total <- large$sleep_total
-large_sleep_total
-```
-```{r}
 mean(large_sleep_total)
 ```
 
@@ -115,11 +101,13 @@ mean(large_sleep_total)
 
 I will consider "sleepiest" as meaning which animal sleeps the longest.
 
-Based on the code below, the Little Brown Bat is the sleepiest among the entire data frame.
+Based on the code below, the Little Brown Bat is the sleepiest among the entire data frame. 
+
+First find the max hours slept in the data frame
 ```{r}
 max(sleep$sleep_total)
 ```
-
+Then find the name associated with 19.9
 ```{r}
 sleepiest <- subset(sleep, sleep_total == 19.9)
 sleepiest[1]
