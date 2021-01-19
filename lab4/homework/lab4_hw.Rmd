@@ -31,23 +31,104 @@ Data: http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1
 
 **1. Load the data into a new object called `homerange`.**
 
+```{r}
+setwd("~/Desktop/GitHub/BIS15W2021_spatel/lab4")
+homerange <- readr::read_csv(file = "data/Tamburelloetal_HomeRangeDatabase.csv")
+
+```
+
 **2. Explore the data. Show the dimensions, column names, classes for each variable, and a statistical summary. Keep these as separate code chunks.**  
+```{r}
+dim(homerange)
+```
+```{r}
+colnames(homerange)
+```
+
+```{r}
+glimpse(homerange)
+```
+```{r}
+summary(homerange)
+```
 
 **3. Change the class of the variables `taxon` and `order` to factors and display their levels.**  
+```{r}
+homerange$taxon <- as.factor(homerange$taxon)
+homerange$order <- as.factor(homerange$order)
+levels(homerange$taxon)
+```
 
 **4. What taxa are represented in the `homerange` data frame? Make a new data frame `taxa` that is restricted to taxon, common name, class, order, family, genus, species.**  
+```{r}
+taxa <- data.frame(select(homerange, "taxon", "common.name", "class", "order", "family", "genus", "species"))
+taxa
+```
+
 
 **5. The variable `taxon` identifies the large, common name groups of the species represented in `homerange`. Make a table the shows the counts for each of these `taxon`.**  
+```{r}
+table(homerange$taxon)
+```
+
 
 **6. The species in `homerange` are also classified into trophic guilds. How many species are represented in each trophic guild.**  
+```{r}
+table(homerange$trophic.guild)
+```
 
 **7. Make two new data frames, one which is restricted to carnivores and another that is restricted to herbivores.**  
+```{r}
+carnivore_df <- data.frame(filter(homerange, trophic.guild == "carnivore"))
+herbivore_df <- data.frame(filter(homerange, trophic.guild == "herbivore"))
+```
 
 **8. Do herbivores or carnivores have, on average, a larger `mean.hra.m2`? Remove any NAs from the data.**  
+```{r}
+glimpse(carnivore_df)
+```
+```{r}
+mean(carnivore_df$ mean.hra.m2, na.rm = T)
+```
+```{r}
+mean(herbivore_df$mean.hra.m2, na.rm = T)
+```
+Herbivores have a larger average mean.hra.m2.
 
 **9. Make a new dataframe `deer` that is limited to the mean mass, log10 mass, family, genus, and species of deer in the database. The family for deer is cervidae. Arrange the data in descending order by log10 mass. Which is the largest deer? What is its common name?**  
+```{r}
+names(homerange)
+```
 
-**10. As measured by the data, which snake species has the smallest homerange? Show all of your work, please. Look this species up online and tell me about it!** **Snake is found in taxon column**    
+```{r}
+deer <- data.frame(select(homerange, "mean.mass.g", "log10.mass", "family", "genus", "species"))
+deer <- filter(deer, family == "cervidae")
+sort(deer$log10.mass, decreasing = T)
+deer
+```
+```{r}
+deer_name <- data.frame(select(filter(homerange, family=="cervidae"), "common.name", "mean.mass.g", "log10.mass", "family", "genus", "species"))
+deer_name
+```
+```{r}
+largest_deer <- subset(deer_name, mean.mass.g == max(mean.mass.g))
+largest_deer
+```
+
+The largest deer is Alces alces. The common name for this is the moose. The weight of the moose is 307,227.44 g 
+
+**10. As measured by the data, which snake species has the smallest homerange? Show all of your work, please. Look this species up online and tell me about it!** **Snake is found in taxon column**  
+```{r}
+snake_df <- filter(homerange, taxon=="snakes")
+snake_df
+```
+```{r}
+smallest_homerange_snake <- subset(snake_df, mean.hra.m2 ==min(mean.hra.m2))
+smallest_homerange_snake
+```
+
+The schneideri snake species has teh smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. 
+source: http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
