@@ -542,6 +542,24 @@ levels(homerange$taxon)</code></pre>
 <pre><code>## [1] &quot;birds&quot;         &quot;lake fishes&quot;   &quot;lizards&quot;       &quot;mammals&quot;      
 ## [5] &quot;marine fishes&quot; &quot;river fishes&quot;  &quot;snakes&quot;        &quot;tortoises&quot;    
 ## [9] &quot;turtles&quot;</code></pre>
+<pre class="r"><code>levels(homerange$order)</code></pre>
+<pre><code>##  [1] &quot;accipitriformes&quot;    &quot;afrosoricida&quot;       &quot;anguilliformes&quot;    
+##  [4] &quot;anseriformes&quot;       &quot;apterygiformes&quot;     &quot;artiodactyla&quot;      
+##  [7] &quot;caprimulgiformes&quot;   &quot;carnivora&quot;          &quot;charadriiformes&quot;   
+## [10] &quot;columbidormes&quot;      &quot;columbiformes&quot;      &quot;coraciiformes&quot;     
+## [13] &quot;cuculiformes&quot;       &quot;cypriniformes&quot;      &quot;dasyuromorpha&quot;     
+## [16] &quot;dasyuromorpia&quot;      &quot;didelphimorphia&quot;    &quot;diprodontia&quot;       
+## [19] &quot;diprotodontia&quot;      &quot;erinaceomorpha&quot;     &quot;esociformes&quot;       
+## [22] &quot;falconiformes&quot;      &quot;gadiformes&quot;         &quot;galliformes&quot;       
+## [25] &quot;gruiformes&quot;         &quot;lagomorpha&quot;         &quot;macroscelidea&quot;     
+## [28] &quot;monotrematae&quot;       &quot;passeriformes&quot;      &quot;pelecaniformes&quot;    
+## [31] &quot;peramelemorphia&quot;    &quot;perciformes&quot;        &quot;perissodactyla&quot;    
+## [34] &quot;piciformes&quot;         &quot;pilosa&quot;             &quot;proboscidea&quot;       
+## [37] &quot;psittaciformes&quot;     &quot;rheiformes&quot;         &quot;roden&quot;             
+## [40] &quot;rodentia&quot;           &quot;salmoniformes&quot;      &quot;scorpaeniformes&quot;   
+## [43] &quot;siluriformes&quot;       &quot;soricomorpha&quot;       &quot;squamata&quot;          
+## [46] &quot;strigiformes&quot;       &quot;struthioniformes&quot;   &quot;syngnathiformes&quot;   
+## [49] &quot;testudines&quot;         &quot;tetraodontiformes\xa0&quot; &quot;tinamiformes&quot;</code></pre>
 <p><strong>4. What taxa are represented in the <code>homerange</code> data frame? Make a new data frame <code>taxa</code> that is restricted to taxon, common name, class, order, family, genus, species.</strong></p>
 <pre class="r"><code>taxa &lt;- data.frame(select(homerange, &quot;taxon&quot;, &quot;common.name&quot;, &quot;class&quot;, &quot;order&quot;, &quot;family&quot;, &quot;genus&quot;, &quot;species&quot;))
 taxa</code></pre>
@@ -2271,34 +2289,7 @@ taxa</code></pre>
 <pre class="r"><code>carnivore_df &lt;- data.frame(filter(homerange, trophic.guild == &quot;carnivore&quot;))
 herbivore_df &lt;- data.frame(filter(homerange, trophic.guild == &quot;herbivore&quot;))</code></pre>
 <p><strong>8. Do herbivores or carnivores have, on average, a larger <code>mean.hra.m2</code>? Remove any NAs from the data.</strong></p>
-<pre class="r"><code>glimpse(carnivore_df)</code></pre>
-<pre><code>## Rows: 342
-## Columns: 24
-## $ taxon                      &lt;fct&gt; lake fishes, river fishes, river fishes, r…
-## $ common.name                &lt;chr&gt; &quot;american eel&quot;, &quot;blacktail redhorse&quot;, &quot;cen…
-## $ class                      &lt;chr&gt; &quot;actinopterygii&quot;, &quot;actinopterygii&quot;, &quot;actin…
-## $ order                      &lt;fct&gt; anguilliformes, cypriniformes, cypriniform…
-## $ family                     &lt;chr&gt; &quot;anguillidae&quot;, &quot;catostomidae&quot;, &quot;cyprinidae…
-## $ genus                      &lt;chr&gt; &quot;anguilla&quot;, &quot;moxostoma&quot;, &quot;campostoma&quot;, &quot;cl…
-## $ species                    &lt;chr&gt; &quot;rostrata&quot;, &quot;poecilura&quot;, &quot;anomalum&quot;, &quot;fund…
-## $ primarymethod              &lt;chr&gt; &quot;telemetry&quot;, &quot;mark-recapture&quot;, &quot;mark-recap…
-## $ N                          &lt;chr&gt; &quot;16&quot;, NA, &quot;20&quot;, &quot;26&quot;, &quot;17&quot;, &quot;5&quot;, &quot;2&quot;, &quot;2&quot;,…
-## $ mean.mass.g                &lt;dbl&gt; 887.00, 562.00, 34.00, 4.00, 4.00, 3525.00…
-## $ log10.mass                 &lt;dbl&gt; 2.9479236, 2.7497363, 1.5314789, 0.6020600…
-## $ alternative.mass.reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ mean.hra.m2                &lt;dbl&gt; 282750.00, 282.10, 116.11, 125.50, 87.10, …
-## $ log10.hra                  &lt;dbl&gt; 5.4514026, 2.4504031, 2.0648696, 2.0986437…
-## $ hra.reference              &lt;chr&gt; &quot;Minns, C. K. 1995. Allometry of home rang…
-## $ realm                      &lt;chr&gt; &quot;aquatic&quot;, &quot;aquatic&quot;, &quot;aquatic&quot;, &quot;aquatic&quot;…
-## $ thermoregulation           &lt;chr&gt; &quot;ectotherm&quot;, &quot;ectotherm&quot;, &quot;ectotherm&quot;, &quot;ec…
-## $ locomotion                 &lt;chr&gt; &quot;swimming&quot;, &quot;swimming&quot;, &quot;swimming&quot;, &quot;swimm…
-## $ trophic.guild              &lt;chr&gt; &quot;carnivore&quot;, &quot;carnivore&quot;, &quot;carnivore&quot;, &quot;ca…
-## $ dimension                  &lt;chr&gt; &quot;3D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, …
-## $ preymass                   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 1.39, NA, NA, NA, …
-## $ log10.preymass             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 0.1430148, NA, NA,…
-## $ PPMR                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 530, NA, NA, NA, N…
-## $ prey.size.reference        &lt;chr&gt; NA, NA, NA, NA, NA, NA, &quot;Brose U, et al. 2…</code></pre>
-<pre class="r"><code>mean(carnivore_df$ mean.hra.m2, na.rm = T)</code></pre>
+<pre class="r"><code>mean(carnivore_df$mean.hra.m2, na.rm = T)</code></pre>
 <pre><code>## [1] 13039918</code></pre>
 <pre class="r"><code>mean(herbivore_df$mean.hra.m2, na.rm = T)</code></pre>
 <pre><code>## [1] 34137012</code></pre>
@@ -2377,7 +2368,7 @@ snake_df</code></pre>
 ## #   log10.hra &lt;dbl&gt;, hra.reference &lt;chr&gt;, realm &lt;chr&gt;, thermoregulation &lt;chr&gt;,
 ## #   locomotion &lt;chr&gt;, trophic.guild &lt;chr&gt;, dimension &lt;chr&gt;, preymass &lt;dbl&gt;,
 ## #   log10.preymass &lt;dbl&gt;, PPMR &lt;dbl&gt;, prey.size.reference &lt;chr&gt;</code></pre>
-<pre class="r"><code>smallest_homerange_snake &lt;- subset(snake_df, mean.hra.m2 ==min(mean.hra.m2))
+<pre class="r"><code>smallest_homerange_snake &lt;- subset(snake_df, mean.hra.m2 == min(mean.hra.m2))
 smallest_homerange_snake</code></pre>
 <pre><code>## # A tibble: 1 x 24
 ##   taxon common.name class order family genus species primarymethod N    
@@ -2388,7 +2379,7 @@ smallest_homerange_snake</code></pre>
 ## #   hra.reference &lt;chr&gt;, realm &lt;chr&gt;, thermoregulation &lt;chr&gt;, locomotion &lt;chr&gt;,
 ## #   trophic.guild &lt;chr&gt;, dimension &lt;chr&gt;, preymass &lt;dbl&gt;, log10.preymass &lt;dbl&gt;,
 ## #   PPMR &lt;dbl&gt;, prey.size.reference &lt;chr&gt;</code></pre>
-<p>The schneideri snake species has teh smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. source: <a href="http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/" class="uri">http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/</a></p>
+<p>The schneideri snake species has the smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. source: <a href="http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/" class="uri">http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/</a></p>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>

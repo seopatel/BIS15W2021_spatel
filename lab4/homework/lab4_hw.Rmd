@@ -58,6 +58,9 @@ homerange$taxon <- as.factor(homerange$taxon)
 homerange$order <- as.factor(homerange$order)
 levels(homerange$taxon)
 ```
+```{r}
+levels(homerange$order)
+```
 
 **4. What taxa are represented in the `homerange` data frame? Make a new data frame `taxa` that is restricted to taxon, common name, class, order, family, genus, species.**  
 ```{r}
@@ -84,11 +87,9 @@ herbivore_df <- data.frame(filter(homerange, trophic.guild == "herbivore"))
 ```
 
 **8. Do herbivores or carnivores have, on average, a larger `mean.hra.m2`? Remove any NAs from the data.**  
+
 ```{r}
-glimpse(carnivore_df)
-```
-```{r}
-mean(carnivore_df$ mean.hra.m2, na.rm = T)
+mean(carnivore_df$mean.hra.m2, na.rm = T)
 ```
 ```{r}
 mean(herbivore_df$mean.hra.m2, na.rm = T)
@@ -123,11 +124,11 @@ snake_df <- filter(homerange, taxon=="snakes")
 snake_df
 ```
 ```{r}
-smallest_homerange_snake <- subset(snake_df, mean.hra.m2 ==min(mean.hra.m2))
+smallest_homerange_snake <- subset(snake_df, mean.hra.m2 == min(mean.hra.m2))
 smallest_homerange_snake
 ```
 
-The schneideri snake species has teh smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. 
+The schneideri snake species has the smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. 
 source: http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/
 
 ## Push your final code to GitHub!

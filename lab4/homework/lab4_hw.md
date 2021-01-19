@@ -192,6 +192,30 @@ levels(homerange$taxon)
 ## [9] "turtles"
 ```
 
+```r
+levels(homerange$order)
+```
+
+```
+##  [1] "accipitriformes"    "afrosoricida"       "anguilliformes"    
+##  [4] "anseriformes"       "apterygiformes"     "artiodactyla"      
+##  [7] "caprimulgiformes"   "carnivora"          "charadriiformes"   
+## [10] "columbidormes"      "columbiformes"      "coraciiformes"     
+## [13] "cuculiformes"       "cypriniformes"      "dasyuromorpha"     
+## [16] "dasyuromorpia"      "didelphimorphia"    "diprodontia"       
+## [19] "diprotodontia"      "erinaceomorpha"     "esociformes"       
+## [22] "falconiformes"      "gadiformes"         "galliformes"       
+## [25] "gruiformes"         "lagomorpha"         "macroscelidea"     
+## [28] "monotrematae"       "passeriformes"      "pelecaniformes"    
+## [31] "peramelemorphia"    "perciformes"        "perissodactyla"    
+## [34] "piciformes"         "pilosa"             "proboscidea"       
+## [37] "psittaciformes"     "rheiformes"         "roden"             
+## [40] "rodentia"           "salmoniformes"      "scorpaeniformes"   
+## [43] "siluriformes"       "soricomorpha"       "squamata"          
+## [46] "strigiformes"       "struthioniformes"   "syngnathiformes"   
+## [49] "testudines"         "tetraodontiformes\xa0" "tinamiformes"
+```
+
 **4. What taxa are represented in the `homerange` data frame? Make a new data frame `taxa` that is restricted to taxon, common name, class, order, family, genus, species.**  
 
 ```r
@@ -1949,41 +1973,9 @@ herbivore_df <- data.frame(filter(homerange, trophic.guild == "herbivore"))
 
 **8. Do herbivores or carnivores have, on average, a larger `mean.hra.m2`? Remove any NAs from the data.**  
 
-```r
-glimpse(carnivore_df)
-```
-
-```
-## Rows: 342
-## Columns: 24
-## $ taxon                      <fct> lake fishes, river fishes, river fishes, r…
-## $ common.name                <chr> "american eel", "blacktail redhorse", "cen…
-## $ class                      <chr> "actinopterygii", "actinopterygii", "actin…
-## $ order                      <fct> anguilliformes, cypriniformes, cypriniform…
-## $ family                     <chr> "anguillidae", "catostomidae", "cyprinidae…
-## $ genus                      <chr> "anguilla", "moxostoma", "campostoma", "cl…
-## $ species                    <chr> "rostrata", "poecilura", "anomalum", "fund…
-## $ primarymethod              <chr> "telemetry", "mark-recapture", "mark-recap…
-## $ N                          <chr> "16", NA, "20", "26", "17", "5", "2", "2",…
-## $ mean.mass.g                <dbl> 887.00, 562.00, 34.00, 4.00, 4.00, 3525.00…
-## $ log10.mass                 <dbl> 2.9479236, 2.7497363, 1.5314789, 0.6020600…
-## $ alternative.mass.reference <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ mean.hra.m2                <dbl> 282750.00, 282.10, 116.11, 125.50, 87.10, …
-## $ log10.hra                  <dbl> 5.4514026, 2.4504031, 2.0648696, 2.0986437…
-## $ hra.reference              <chr> "Minns, C. K. 1995. Allometry of home rang…
-## $ realm                      <chr> "aquatic", "aquatic", "aquatic", "aquatic"…
-## $ thermoregulation           <chr> "ectotherm", "ectotherm", "ectotherm", "ec…
-## $ locomotion                 <chr> "swimming", "swimming", "swimming", "swimm…
-## $ trophic.guild              <chr> "carnivore", "carnivore", "carnivore", "ca…
-## $ dimension                  <chr> "3D", "2D", "2D", "2D", "2D", "2D", "2D", …
-## $ preymass                   <dbl> NA, NA, NA, NA, NA, NA, 1.39, NA, NA, NA, …
-## $ log10.preymass             <dbl> NA, NA, NA, NA, NA, NA, 0.1430148, NA, NA,…
-## $ PPMR                       <dbl> NA, NA, NA, NA, NA, NA, 530, NA, NA, NA, N…
-## $ prey.size.reference        <chr> NA, NA, NA, NA, NA, NA, "Brose U, et al. 2…
-```
 
 ```r
-mean(carnivore_df$ mean.hra.m2, na.rm = T)
+mean(carnivore_df$mean.hra.m2, na.rm = T)
 ```
 
 ```
@@ -2114,7 +2106,7 @@ snake_df
 ```
 
 ```r
-smallest_homerange_snake <- subset(snake_df, mean.hra.m2 ==min(mean.hra.m2))
+smallest_homerange_snake <- subset(snake_df, mean.hra.m2 == min(mean.hra.m2))
 smallest_homerange_snake
 ```
 
@@ -2130,7 +2122,7 @@ smallest_homerange_snake
 ## #   PPMR <dbl>, prey.size.reference <chr>
 ```
 
-The schneideri snake species has teh smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. 
+The schneideri snake species has the smallest homerange! The common name is the Namaqua dwarf adder. This species is pretty cool! It is venomous and feeds on lizards and Rain frogs. It is found in the coastal dunes in Namaqualand and southern Nambia. Although it is preyed upon by small carnivores and predatory birds, habitat destruction and illegal collecting for pet trade are its biggest threats. 
 source: http://africansnakebiteinstitute.com/snake/namaqua-dwarf-adder/
 
 ## Push your final code to GitHub!
