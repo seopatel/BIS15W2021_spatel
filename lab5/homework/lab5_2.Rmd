@@ -1,5 +1,6 @@
 ---
 title: "dplyr Superhero"
+author: "Seona Patel"
 date: "`r Sys.Date()`"
 output:
   html_document: 
