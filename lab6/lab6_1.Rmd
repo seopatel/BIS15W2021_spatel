@@ -32,7 +32,7 @@ library("janitor")
 
 ## Install `skimr`
 ```{r}
-install.packages("skimr")
+#install.packages("skimr")
 library("skimr")
 ```
 
@@ -45,7 +45,7 @@ names(msleep)
 
 We will also use the awesome [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/articles/intro.html) data in the second part of lab so let's install it now.
 ```{r}
-install.packages("remotes")
+#install.packages("remotes")
 remotes::install_github("allisonhorst/palmerpenguins")
 ```
 
