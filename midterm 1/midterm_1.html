@@ -417,9 +417,10 @@ summary {
 </div>
 <div id="questions" class="section level2">
 <h2>Questions</h2>
-<p><strong>1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?</strong><br />
-R is a scripting language in which you write code and it does exactly what you want. RStudio is a graphical user interface that interacts with R and makes the coding experience more user-friendly. GitHub is a website used by programmers to store and manage files. It is useful because it makes it very easy and convenient for programmers to share their code and repositories. Once you have written your code in RStudio, pushing it to GitHub allows you to share what you coded with others so other people can take your code and change it or add more. The advantage of using RMarkdown in this context is that RMarkdown files allow you to format and knit together your code into a very organzied and readable file. This makes it even easier for others to understand your code and read through it quickly.</p>
-<p><strong>2. (2 points) What are the three types of <code>data structures</code> that we have discussed? Why are we using data frames for BIS 15L?</strong> The 3 types of data structures that we have discussed are data frames, vectors, and data matrices. We are using data frames for BIS15L because it is the most common way to organize data in R and is a more readable and organized way to display data compared to a data matrix.</p>
+<p><strong>1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?</strong></p>
+<p>R is a scripting language in which you write code and it does exactly what you want. RStudio is a graphical user interface that interacts with R and makes the coding experience more user-friendly. GitHub is a website used by programmers to store and manage files. It is useful because it makes it very easy and convenient for programmers to share their code and repositories. Once you have written your code in RStudio, pushing it to GitHub allows you to share what you coded with others so other people can take your code and change it or add more. The advantage of using RMarkdown in this context is that RMarkdown files allow you to format and knit together your code into a very organzied and readable file. This makes it even easier for others to understand your code and read through it quickly.</p>
+<p><strong>2. (2 points) What are the three types of <code>data structures</code> that we have discussed? Why are we using data frames for BIS 15L?</strong></p>
+<p>The 3 types of data structures that we have discussed are data frames, vectors, and data matrices. We are using data frames for BIS15L because it is the most common way to organize data in R and is a more readable and organized way to display data compared to a data matrix.</p>
 <p>In the midterm 1 folder there is a second folder called <code>data</code>. Inside the <code>data</code> folder, there is a .csv file called <code>ElephantsMF</code>. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), “Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana),” Biology Letters, 9: 20130011. <a href="https://www.kaggle.com/mostafaelseidy/elephantsmf">kaggle</a>.</p>
 <p><strong>3. (2 points) Please load these data as a new object called <code>elephants</code>. Use the function(s) of your choice to get an idea of the structure of the data. Be sure to show the class of each variable.</strong></p>
 <pre class="r"><code>getwd()</code></pre>
@@ -469,7 +470,8 @@ elephants</code></pre>
 <pre class="r"><code>elephants$sex &lt;- as.factor(elephants$sex)
 class(elephants$sex)</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<p><strong>5. (2 points) How many male and female elephants are represented in the data?</strong> There are 150 females and 138 males.</p>
+<p><strong>5. (2 points) How many male and female elephants are represented in the data?</strong></p>
+<p>There are 150 females and 138 males.</p>
 <pre class="r"><code>elephants %&gt;%
   group_by(sex) %&gt;% 
   summarize(total = n())</code></pre>
@@ -478,14 +480,16 @@ class(elephants$sex)</code></pre>
 ## * &lt;fct&gt; &lt;int&gt;
 ## 1 F       150
 ## 2 M       138</code></pre>
-<p><strong>6. (2 points) What is the average age all elephants in the data?</strong> The average age of all elephants is 10.97132.</p>
+<p><strong>6. (2 points) What is the average age all elephants in the data?</strong></p>
+<p>The average age of all elephants is 10.97132.</p>
 <pre class="r"><code>elephants %&gt;% 
   summarize(average_age = mean(age))</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   average_age
 ##         &lt;dbl&gt;
 ## 1        11.0</code></pre>
-<p><strong>7. (2 points) How does the average age and height of elephants compare by sex?</strong> Males are younger and shorter than females.</p>
+<p><strong>7. (2 points) How does the average age and height of elephants compare by sex?</strong></p>
+<p>Males are younger and shorter than females.</p>
 <pre class="r"><code>elephants %&gt;% 
   group_by(sex) %&gt;% 
   summarize(average_age = mean(age),
@@ -495,7 +499,8 @@ class(elephants$sex)</code></pre>
 ## * &lt;fct&gt;       &lt;dbl&gt;          &lt;dbl&gt;
 ## 1 F           12.8            190.
 ## 2 M            8.95           185.</code></pre>
-<p><strong>8. (2 points) How does the average height of elephants compare by sex for individuals over 25 years old. Include the min and max height as well as the number of individuals in the sample as part of your analysis.</strong> Males that are over 25 years old are taller on average than females over 25 years old.</p>
+<p><strong>8. (2 points) How does the average height of elephants compare by sex for individuals over 25 years old. Include the min and max height as well as the number of individuals in the sample as part of your analysis.</strong></p>
+<p>Males that are over 25 years old are taller on average than females over 25 years old.</p>
 <pre class="r"><code>elephants %&gt;% 
   filter(age &gt; 25) %&gt;% 
   group_by(sex) %&gt;% 
@@ -573,7 +578,8 @@ class(gabon$HuntCat)</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <pre class="r"><code>class(gabon$LandUse)</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
-<p><strong>10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?</strong> In high and moderate transects, mammals are more diverse on average.</p>
+<p><strong>10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?</strong></p>
+<p>In transects with high and moderate hunting intensity, mammals are more diverse on average.</p>
 <pre class="r"><code>gabon %&gt;% 
   filter(HuntCat == &quot;Moderate&quot; | HuntCat == &quot;High&quot;) %&gt;% 
   group_by(HuntCat)  %&gt;% 
@@ -584,8 +590,8 @@ class(gabon$HuntCat)</code></pre>
 ## * &lt;fct&gt;                     &lt;dbl&gt;                    &lt;dbl&gt;
 ## 1 High                       1.66                     1.74
 ## 2 Moderate                   1.62                     1.68</code></pre>
-<p><strong>11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let’s try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable <code>Distance</code> measures the distance of the transect from the nearest village. Hint: try using the <code>across</code> operator.</strong><br />
-This shows that the relative abundance of apes, elephants, monkeys, and ungulates drops off in sites that are &lt;5km from a village compared to &gt;20km. The relative abundance of birds and rodents are higher in sites that are &lt;5km from a village compared to &gt;20km.</p>
+<p><strong>11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let’s try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable <code>Distance</code> measures the distance of the transect from the nearest village. Hint: try using the <code>across</code> operator.</strong></p>
+<p>This shows that the relative abundance of apes, elephants, monkeys, and ungulates drops off in sites that are &lt;5 km from a village compared to &gt;20 km. The relative abundance of birds and rodents are higher in sites that are &lt;5 km from a village compared to &gt;20 km.</p>
 <pre class="r"><code>gabon %&gt;% 
   filter(Distance &lt; 5 | Distance &gt; 20)  %&gt;% 
   group_by(Distance &lt; 5) %&gt;% 
@@ -595,7 +601,8 @@ This shows that the relative abundance of apes, elephants, monkeys, and ungulate
 ## * &lt;lgl&gt;            &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 FALSE             7.21     44.5      0.557        40.1      2.68        4.98
 ## 2 TRUE              0.08     70.4      0.0967       24.1      3.66        1.59</code></pre>
-<p><strong>12. (4 points) Based on your interest, do one exploratory analysis on the <code>gabon</code> data of your choice. This analysis needs to include a minimum of two functions in <code>dplyr.</code></strong> Which region of land use has the greatest average tree richness?</p>
+<p><strong>12. (4 points) Based on your interest, do one exploratory analysis on the <code>gabon</code> data of your choice. This analysis needs to include a minimum of two functions in <code>dplyr.</code></strong></p>
+<p>Which region of land use has the greatest average tree richness?</p>
 <pre class="r"><code>gabon %&gt;%
   group_by(LandUse) %&gt;% 
   summarise(average_tree_richness = mean(Veg_Rich)) %&gt;% 

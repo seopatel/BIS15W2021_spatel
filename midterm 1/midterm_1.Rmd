@@ -27,9 +27,11 @@ library(tidyverse)
 
 ## Questions
 **1. (2 points) Briefly explain how R, RStudio, and GitHub work together to make work flows in data science transparent and repeatable. What is the advantage of using RMarkdown in this context?**  
+
 R is a scripting language in which you write code and it does exactly what you want. RStudio is a graphical user interface that interacts with R and makes the coding experience more user-friendly. GitHub is a website used by programmers to store and manage files. It is useful because it makes it very easy and convenient for programmers to share their code and repositories. Once you have written your code in RStudio, pushing it to GitHub allows you to share what you coded with others so other people can take your code and change it or add more. The advantage of using RMarkdown in this context is that RMarkdown files allow you to format and knit together your code into a very organzied and readable file. This makes it even easier for others to understand your code and read through it quickly. 
 
 **2. (2 points) What are the three types of `data structures` that we have discussed? Why are we using data frames for BIS 15L?**
+
 The 3 types of data structures that we have discussed are data frames, vectors, and data matrices. We are using data frames for BIS15L because it is the most common way to organize data in R and is a more readable and organized way to display data compared to a data matrix. 
 
 In the midterm 1 folder there is a second folder called `data`. Inside the `data` folder, there is a .csv file called `ElephantsMF`. These data are from Phyllis Lee, Stirling University, and are related to Lee, P., et al. (2013), "Enduring consequences of early experiences: 40-year effects on survival and success among African elephants (Loxodonta africana)," Biology Letters, 9: 20130011. [kaggle](https://www.kaggle.com/mostafaelseidy/elephantsmf).  
@@ -63,6 +65,7 @@ class(elephants$sex)
 ```
 
 **5. (2 points) How many male and female elephants are represented in the data?**
+
 There are 150 females and 138 males.
 ```{r}
 elephants %>%
@@ -73,6 +76,7 @@ elephants %>%
 
 
 **6. (2 points) What is the average age all elephants in the data?**
+
 The average age of all elephants is 10.97132.
 ```{r}
 elephants %>% 
@@ -80,6 +84,7 @@ elephants %>%
 ```
 
 **7. (2 points) How does the average age and height of elephants compare by sex?**
+
 Males are younger and shorter than females.
 ```{r}
 elephants %>% 
@@ -89,6 +94,7 @@ elephants %>%
 ```
 
 **8. (2 points) How does the average height of elephants compare by sex for individuals over 25 years old. Include the min and max height as well as the number of individuals in the sample as part of your analysis.**
+
 Males that are over 25 years old are taller on average than females over 25 years old. 
 ```{r}
 elephants %>% 
@@ -123,7 +129,8 @@ class(gabon$LandUse)
 ```
 
 **10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
-In high and moderate transects, mammals are more diverse on average. 
+
+In transects with high and moderate hunting intensity, mammals are more diverse on average. 
 
 ```{r}
 gabon %>% 
@@ -134,8 +141,8 @@ gabon %>%
 ```
 
 **11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let's try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable `Distance` measures the distance of the transect from the nearest village. Hint: try using the `across` operator.**  
-This shows that the relative abundance of apes, elephants, monkeys, and ungulates drops off in sites that are <5km from a village compared to >20km.
-The relative abundance of birds and rodents are higher in sites that are <5km from a village compared to >20km. 
+
+This shows that the relative abundance of apes, elephants, monkeys, and ungulates drops off in sites that are <5 km from a village compared to >20 km. The relative abundance of birds and rodents are higher in sites that are <5 km from a village compared to >20 km. 
 ```{r}
 gabon %>% 
   filter(Distance < 5 | Distance > 20)  %>% 
@@ -144,6 +151,7 @@ gabon %>%
 ```
 
 **12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
+
 Which region of land use has the greatest average tree richness? 
 ```{r}
 gabon %>%
