@@ -598,7 +598,7 @@ This shows that the relative abundance of apes, elephants, monkeys, and ungulate
 <p><strong>12. (4 points) Based on your interest, do one exploratory analysis on the <code>gabon</code> data of your choice. This analysis needs to include a minimum of two functions in <code>dplyr.</code></strong> Which region of land use has the greatest average tree richness?</p>
 <pre class="r"><code>gabon %&gt;%
   group_by(LandUse) %&gt;% 
-  summarize(average_tree_richness = mean(Veg_Rich)) %&gt;% 
+  summarise(average_tree_richness = mean(Veg_Rich)) %&gt;% 
   arrange(desc(average_tree_richness))</code></pre>
 <pre><code>## # A tibble: 3 x 2
 ##   LandUse average_tree_richness

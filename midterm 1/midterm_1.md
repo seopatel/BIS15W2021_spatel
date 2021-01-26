@@ -340,7 +340,7 @@ Which region of land use has the greatest average tree richness?
 ```r
 gabon %>%
   group_by(LandUse) %>% 
-  summarize(average_tree_richness = mean(Veg_Rich)) %>% 
+  summarise(average_tree_richness = mean(Veg_Rich)) %>% 
   arrange(desc(average_tree_richness))
 ```
 
