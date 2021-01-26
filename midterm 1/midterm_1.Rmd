@@ -149,6 +149,7 @@ gabon %>%
   group_by(Distance < 5) %>% 
   summarize(across(c(RA_Apes, RA_Birds, RA_Elephant, RA_Monkeys, RA_Rodent, RA_Ungulate), mean))
 ```
+(FALSE means that the Distance is > 20 km and TRUE means that the Distance is < 5 km)
 
 **12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
 

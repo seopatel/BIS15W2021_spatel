@@ -340,6 +340,7 @@ gabon %>%
 ## 1 FALSE             7.21     44.5      0.557        40.1      2.68        4.98
 ## 2 TRUE              0.08     70.4      0.0967       24.1      3.66        1.59
 ```
+(FALSE means that the Distance is > 20 km and TRUE means that the Distance is < 5 km)
 
 **12. (4 points) Based on your interest, do one exploratory analysis on the `gabon` data of your choice. This analysis needs to include a minimum of two functions in `dplyr.`**
 
