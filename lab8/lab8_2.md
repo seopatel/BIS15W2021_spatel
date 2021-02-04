@@ -1,6 +1,6 @@
 ---
 title: "Tidyr 2: `pivot_wider()`"
-date: "2021-02-02"
+date: "2021-02-04"
 output:
   html_document: 
     theme: spacelab
