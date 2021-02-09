@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1"
 author: "Seona Patel"
-date: "2021-01-26"
+date: "2021-02-09"
 output:
   html_document: 
     theme: spacelab
@@ -42,7 +42,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/seonapatel/Desktop/GitHub/BIS15W2021_spatel/midterm 1"
+## [1] "/Users/Joel/Desktop/BIS15W2021_spatel/midterm 1"
 ```
 
 ```r
@@ -127,6 +127,8 @@ class(elephants$sex)
 ## [1] "factor"
 ```
 
+_You could also use the janitor package here to make things a bit easier._  
+
 **5. (2 points) How many male and female elephants are represented in the data?**
 
 There are 150 females and 138 males.
@@ -145,6 +147,19 @@ elephants %>%
 ## 2 M       138
 ```
 
+_Since you are doing a count, the count function is a bit cleaner_
+
+```r
+elephants %>% count(sex)
+```
+
+```
+## # A tibble: 2 x 2
+##   sex       n
+## * <fct> <int>
+## 1 F       150
+## 2 M       138
+```
 
 **6. (2 points) What is the average age all elephants in the data?**
 
@@ -362,3 +377,5 @@ gabon %>%
 ## 3 Neither                  13.5
 ```
 The Park has the greatest average tree richness!
+
+_Nice job Seona, I only a made a few suggestions. Keep up the good work!_
