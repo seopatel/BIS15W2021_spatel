@@ -64,6 +64,8 @@ elephants$sex <- as.factor(elephants$sex)
 class(elephants$sex)
 ```
 
+_You could also use the janitor package here to make things a bit easier._  
+
 **5. (2 points) How many male and female elephants are represented in the data?**
 
 There are 150 females and 138 males.
@@ -74,6 +76,10 @@ elephants %>%
   
 ```
 
+_Since you are doing a count, the count function is a bit cleaner_
+```{r}
+elephants %>% count(sex)
+```
 
 **6. (2 points) What is the average age all elephants in the data?**
 
@@ -113,7 +119,6 @@ Reference: Koerner SE, Poulsen JR, Blanchard EJ, Okouyi J, Clark CJ. Vertebrate 
 **9. (2 points) Load `IvindoData_DryadVersion.csv` and use the function(s) of your choice to get an idea of the overall structure. Change the variables `HuntCat` and `LandUse` to factors.**
 ```{r}
 gabon <- readr::read_csv("data/IvindoData_DryadVersion.csv")
-
 ```
 ```{r}
 glimpse(gabon)
@@ -159,7 +164,7 @@ gabon %>%
   group_by(LandUse) %>% 
   summarise(average_tree_richness = mean(Veg_Rich)) %>% 
   arrange(desc(average_tree_richness))
-  
-
 ```
 The Park has the greatest average tree richness!
+
+_Nice job Seona, I only a made a few suggestions. Keep up the good work!_
