@@ -179,36 +179,37 @@ top_ten %>%
 
 4. The column `COSTT4_A` is the annual cost of each institution. Which city has the highest average cost? Where is it located?
 
-**Harvey Mudd College has the highest cost. It is located in Claremont, CA**
+**Claremont has the highest cost.**
 
 
 ```r
-highest_cost <- colleges %>% 
+colleges %>% 
   select(instnm, city, costt4_a) %>% 
-  arrange(desc(costt4_a))
-highest_cost
+  group_by(city) %>% 
+  summarise(avg_cost = mean(costt4_a, na.rm = T)) %>% 
+  arrange(desc(avg_cost))
 ```
 
 ```
-## # A tibble: 341 x 3
-##    instnm                                        city          costt4_a
-##    <chr>                                         <chr>            <dbl>
-##  1 Harvey Mudd College                           Claremont        69355
-##  2 Southern California Institute of Architecture Los Angeles      67225
-##  3 University of Southern California             Los Angeles      67064
-##  4 Occidental College                            Los Angeles      67046
-##  5 Claremont McKenna College                     Claremont        66325
-##  6 Pepperdine University                         Malibu           66152
-##  7 Scripps College                               Claremont        66060
-##  8 Pitzer College                                Claremont        65880
-##  9 San Francisco Art Institute                   San Francisco    65453
-## 10 Pomona College                                Claremont        64870
-## # … with 331 more rows
+## # A tibble: 161 x 2
+##    city                avg_cost
+##    <chr>                  <dbl>
+##  1 Claremont              66498
+##  2 Malibu                 66152
+##  3 Valencia               64686
+##  4 Orange                 64501
+##  5 Redlands               61542
+##  6 Moraga                 61095
+##  7 Atherton               56035
+##  8 Thousand Oaks          54373
+##  9 Rancho Palos Verdes    50758
+## 10 La Verne               50603
+## # … with 151 more rows
 ```
 
 5. Based on your answer to #4, make a plot that compares the cost of the individual colleges in the most expensive city. Bonus! Add UC Davis here to see how it compares :>).
 
-Davis is almost half the price of the schools in claremont!
+**Davis is almost half the price of the schools in claremont! Harvey Mudd College is the most expensive college.**
 
 
 ```r
@@ -222,6 +223,7 @@ colleges %>%
 ```
 
 ![](lab9_hw_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+
 
 6. The column `ADM_RATE` is the admissions rate by college and `C150_4_POOLED` is the four-year completion rate. Use a scatterplot to show the relationship between these two variables. What do you think this means?
 

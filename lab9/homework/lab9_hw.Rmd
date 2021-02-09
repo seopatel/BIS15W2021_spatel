@@ -79,24 +79,26 @@ top_ten %>%
 
 4. The column `COSTT4_A` is the annual cost of each institution. Which city has the highest average cost? Where is it located?
 
-**Harvey Mudd College has the highest cost. It is located in Claremont, CA**
+**Claremont has the highest cost.**
 
 ```{r}
-highest_cost <- colleges %>% 
+colleges %>% 
   select(instnm, city, costt4_a) %>% 
-  arrange(desc(costt4_a))
-highest_cost
+  group_by(city) %>% 
+  summarise(avg_cost = mean(costt4_a, na.rm = T)) %>% 
+  arrange(desc(avg_cost))
 ```
 
 5. Based on your answer to #4, make a plot that compares the cost of the individual colleges in the most expensive city. Bonus! Add UC Davis here to see how it compares :>).
 
-Davis is almost half the price of the schools in claremont!
+**Davis is almost half the price of the schools in claremont! Harvey Mudd College is the most expensive college.**
 
 ```{r}
 colleges %>% 
   filter(city == "Claremont"| instnm == "University of California-Davis") %>%  
   ggplot(aes(x=instnm, y=costt4_a))+ geom_col()+coord_flip()
 ```
+
 
 6. The column `ADM_RATE` is the admissions rate by college and `C150_4_POOLED` is the four-year completion rate. Use a scatterplot to show the relationship between these two variables. What do you think this means?
 

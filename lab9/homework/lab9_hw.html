@@ -531,29 +531,30 @@ top_ten %&gt;%
 <ol start="4" style="list-style-type: decimal">
 <li>The column <code>COSTT4_A</code> is the annual cost of each institution. Which city has the highest average cost? Where is it located?</li>
 </ol>
-<p><strong>Harvey Mudd College has the highest cost. It is located in Claremont, CA</strong></p>
-<pre class="r"><code>highest_cost &lt;- colleges %&gt;% 
+<p><strong>Claremont has the highest cost.</strong></p>
+<pre class="r"><code>colleges %&gt;% 
   select(instnm, city, costt4_a) %&gt;% 
-  arrange(desc(costt4_a))
-highest_cost</code></pre>
-<pre><code>## # A tibble: 341 x 3
-##    instnm                                        city          costt4_a
-##    &lt;chr&gt;                                         &lt;chr&gt;            &lt;dbl&gt;
-##  1 Harvey Mudd College                           Claremont        69355
-##  2 Southern California Institute of Architecture Los Angeles      67225
-##  3 University of Southern California             Los Angeles      67064
-##  4 Occidental College                            Los Angeles      67046
-##  5 Claremont McKenna College                     Claremont        66325
-##  6 Pepperdine University                         Malibu           66152
-##  7 Scripps College                               Claremont        66060
-##  8 Pitzer College                                Claremont        65880
-##  9 San Francisco Art Institute                   San Francisco    65453
-## 10 Pomona College                                Claremont        64870
-## # … with 331 more rows</code></pre>
+  group_by(city) %&gt;% 
+  summarise(avg_cost = mean(costt4_a, na.rm = T)) %&gt;% 
+  arrange(desc(avg_cost))</code></pre>
+<pre><code>## # A tibble: 161 x 2
+##    city                avg_cost
+##    &lt;chr&gt;                  &lt;dbl&gt;
+##  1 Claremont              66498
+##  2 Malibu                 66152
+##  3 Valencia               64686
+##  4 Orange                 64501
+##  5 Redlands               61542
+##  6 Moraga                 61095
+##  7 Atherton               56035
+##  8 Thousand Oaks          54373
+##  9 Rancho Palos Verdes    50758
+## 10 La Verne               50603
+## # … with 151 more rows</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Based on your answer to #4, make a plot that compares the cost of the individual colleges in the most expensive city. Bonus! Add UC Davis here to see how it compares :&gt;).</li>
 </ol>
-<p>Davis is almost half the price of the schools in claremont!</p>
+<p><strong>Davis is almost half the price of the schools in claremont! Harvey Mudd College is the most expensive college.</strong></p>
 <pre class="r"><code>colleges %&gt;% 
   filter(city == &quot;Claremont&quot;| instnm == &quot;University of California-Davis&quot;) %&gt;%  
   ggplot(aes(x=instnm, y=costt4_a))+ geom_col()+coord_flip()</code></pre>
