@@ -1,7 +1,7 @@
 ---
 title: "Lab 9 Homework"
 author: "Please Add Your Name Here"
-date: "2021-02-09"
+date: "2021-02-14"
 output:
   html_document: 
     theme: spacelab
@@ -32,7 +32,7 @@ colleges <- read_csv("data/ca_college_data.csv")
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   INSTNM = col_character(),
 ##   CITY = col_character(),
@@ -72,16 +72,16 @@ glimpse(colleges)
 ```
 ## Rows: 341
 ## Columns: 10
-## $ INSTNM        <chr> "Grossmont College", "College of the Sequoias", "Colleg…
-## $ CITY          <chr> "El Cajon", "Visalia", "San Mateo", "Ventura", "Oxnard"…
-## $ STABBR        <chr> "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "…
-## $ ZIP           <chr> "92020-1799", "93277-2214", "94402-3784", "93003-3872",…
-## $ ADM_RATE      <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ SAT_AVG       <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ PCIP26        <dbl> 0.0016, 0.0066, 0.0038, 0.0035, 0.0085, 0.0151, 0.0000,…
-## $ COSTT4_A      <dbl> 7956, 8109, 8278, 8407, 8516, 8577, 8580, 9181, 9281, 9…
-## $ C150_4_POOLED <dbl> NA, NA, NA, NA, NA, NA, 0.2334, NA, NA, NA, NA, 0.1704,…
-## $ PFTFTUG1_EF   <dbl> 0.3546, 0.5413, 0.3567, 0.3824, 0.2753, 0.4286, 0.2307,…
+## $ INSTNM        <chr> "Grossmont College", "College of the Sequoias", "Coll...
+## $ CITY          <chr> "El Cajon", "Visalia", "San Mateo", "Ventura", "Oxnar...
+## $ STABBR        <chr> "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA",...
+## $ ZIP           <chr> "92020-1799", "93277-2214", "94402-3784", "93003-3872...
+## $ ADM_RATE      <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+## $ SAT_AVG       <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+## $ PCIP26        <dbl> 0.0016, 0.0066, 0.0038, 0.0035, 0.0085, 0.0151, 0.000...
+## $ COSTT4_A      <dbl> 7956, 8109, 8278, 8407, 8516, 8577, 8580, 9181, 9281,...
+## $ C150_4_POOLED <dbl> NA, NA, NA, NA, NA, NA, 0.2334, NA, NA, NA, NA, 0.170...
+## $ PFTFTUG1_EF   <dbl> 0.3546, 0.5413, 0.3567, 0.3824, 0.2753, 0.4286, 0.230...
 ```
 
 
@@ -164,7 +164,7 @@ colleges_by_city
 ##  8 Pasadena                       6
 ##  9 Fresno                         5
 ## 10 Irvine                         5
-## # … with 151 more rows
+## # ... with 151 more rows
 ```
 
 3. Based on your answer to #2, make a plot that shows the number of colleges in the top 10 cities.
@@ -204,7 +204,7 @@ colleges %>%
 ##  8 Thousand Oaks          54373
 ##  9 Rancho Palos Verdes    50758
 ## 10 La Verne               50603
-## # … with 151 more rows
+## # ... with 151 more rows
 ```
 
 5. Based on your answer to #4, make a plot that compares the cost of the individual colleges in the most expensive city. Bonus! Add UC Davis here to see how it compares :>).
@@ -283,17 +283,17 @@ uc_colleges
 ## # A tibble: 10 x 10
 ##    instnm city  stabbr zip   adm_rate sat_avg pcip26 costt4_a c150_4_pooled
 ##    <chr>  <chr> <chr>  <chr>    <dbl>   <dbl>  <dbl>    <dbl>         <dbl>
-##  1 Unive… La J… CA     92093    0.357    1324  0.216    31043         0.872
-##  2 Unive… Irvi… CA     92697    0.406    1206  0.107    31198         0.876
-##  3 Unive… Rive… CA     92521    0.663    1078  0.149    31494         0.73 
-##  4 Unive… Los … CA     9009…    0.180    1334  0.155    33078         0.911
-##  5 Unive… Davis CA     9561…    0.423    1218  0.198    33904         0.850
-##  6 Unive… Sant… CA     9506…    0.578    1201  0.193    34608         0.776
-##  7 Unive… Berk… CA     94720    0.169    1422  0.105    34924         0.916
-##  8 Unive… Sant… CA     93106    0.358    1281  0.108    34998         0.816
-##  9 Unive… San … CA     9410…   NA          NA NA           NA        NA    
-## 10 Unive… San … CA     9414…   NA          NA NA           NA        NA    
-## # … with 1 more variable: pftftug1_ef <dbl>
+##  1 Unive~ La J~ CA     92093    0.357    1324  0.216    31043         0.872
+##  2 Unive~ Irvi~ CA     92697    0.406    1206  0.107    31198         0.876
+##  3 Unive~ Rive~ CA     92521    0.663    1078  0.149    31494         0.73 
+##  4 Unive~ Los ~ CA     9009~    0.180    1334  0.155    33078         0.911
+##  5 Unive~ Davis CA     9561~    0.423    1218  0.198    33904         0.850
+##  6 Unive~ Sant~ CA     9506~    0.578    1201  0.193    34608         0.776
+##  7 Unive~ Berk~ CA     94720    0.169    1422  0.105    34924         0.916
+##  8 Unive~ Sant~ CA     93106    0.358    1281  0.108    34998         0.816
+##  9 Unive~ San ~ CA     9410~   NA          NA NA           NA        NA    
+## 10 Unive~ San ~ CA     9414~   NA          NA NA           NA        NA    
+## # ... with 1 more variable: pftftug1_ef <dbl>
 ```
 
 Remove `Hastings College of Law` and `UC San Francisco` and store the final data frame as a new object `univ_calif_final`.
@@ -308,15 +308,15 @@ uc_colleges
 ## # A tibble: 8 x 10
 ##   instnm city  stabbr zip   adm_rate sat_avg pcip26 costt4_a c150_4_pooled
 ##   <chr>  <chr> <chr>  <chr>    <dbl>   <dbl>  <dbl>    <dbl>         <dbl>
-## 1 Unive… La J… CA     92093    0.357    1324  0.216    31043         0.872
-## 2 Unive… Irvi… CA     92697    0.406    1206  0.107    31198         0.876
-## 3 Unive… Rive… CA     92521    0.663    1078  0.149    31494         0.73 
-## 4 Unive… Los … CA     9009…    0.180    1334  0.155    33078         0.911
-## 5 Unive… Davis CA     9561…    0.423    1218  0.198    33904         0.850
-## 6 Unive… Sant… CA     9506…    0.578    1201  0.193    34608         0.776
-## 7 Unive… Berk… CA     94720    0.169    1422  0.105    34924         0.916
-## 8 Unive… Sant… CA     93106    0.358    1281  0.108    34998         0.816
-## # … with 1 more variable: pftftug1_ef <dbl>
+## 1 Unive~ La J~ CA     92093    0.357    1324  0.216    31043         0.872
+## 2 Unive~ Irvi~ CA     92697    0.406    1206  0.107    31198         0.876
+## 3 Unive~ Rive~ CA     92521    0.663    1078  0.149    31494         0.73 
+## 4 Unive~ Los ~ CA     9009~    0.180    1334  0.155    33078         0.911
+## 5 Unive~ Davis CA     9561~    0.423    1218  0.198    33904         0.850
+## 6 Unive~ Sant~ CA     9506~    0.578    1201  0.193    34608         0.776
+## 7 Unive~ Berk~ CA     94720    0.169    1422  0.105    34924         0.916
+## 8 Unive~ Sant~ CA     93106    0.358    1281  0.108    34998         0.816
+## # ... with 1 more variable: pftftug1_ef <dbl>
 ```
 
 Use `separate()` to separate institution name into two new columns "UNIV" and "CAMPUS".
@@ -331,15 +331,15 @@ uc_colleges2
 ## # A tibble: 8 x 11
 ##   univ  campus city  stabbr zip   adm_rate sat_avg pcip26 costt4_a c150_4_pooled
 ##   <chr> <chr>  <chr> <chr>  <chr>    <dbl>   <dbl>  <dbl>    <dbl>         <dbl>
-## 1 Univ… San D… La J… CA     92093    0.357    1324  0.216    31043         0.872
-## 2 Univ… Irvine Irvi… CA     92697    0.406    1206  0.107    31198         0.876
-## 3 Univ… River… Rive… CA     92521    0.663    1078  0.149    31494         0.73 
-## 4 Univ… Los A… Los … CA     9009…    0.180    1334  0.155    33078         0.911
-## 5 Univ… Davis  Davis CA     9561…    0.423    1218  0.198    33904         0.850
-## 6 Univ… Santa… Sant… CA     9506…    0.578    1201  0.193    34608         0.776
-## 7 Univ… Berke… Berk… CA     94720    0.169    1422  0.105    34924         0.916
-## 8 Univ… Santa… Sant… CA     93106    0.358    1281  0.108    34998         0.816
-## # … with 1 more variable: pftftug1_ef <dbl>
+## 1 Univ~ San D~ La J~ CA     92093    0.357    1324  0.216    31043         0.872
+## 2 Univ~ Irvine Irvi~ CA     92697    0.406    1206  0.107    31198         0.876
+## 3 Univ~ River~ Rive~ CA     92521    0.663    1078  0.149    31494         0.73 
+## 4 Univ~ Los A~ Los ~ CA     9009~    0.180    1334  0.155    33078         0.911
+## 5 Univ~ Davis  Davis CA     9561~    0.423    1218  0.198    33904         0.850
+## 6 Univ~ Santa~ Sant~ CA     9506~    0.578    1201  0.193    34608         0.776
+## 7 Univ~ Berke~ Berk~ CA     94720    0.169    1422  0.105    34924         0.916
+## 8 Univ~ Santa~ Sant~ CA     93106    0.358    1281  0.108    34998         0.816
+## # ... with 1 more variable: pftftug1_ef <dbl>
 ```
 
 9. The column `ADM_RATE` is the admissions rate by campus. Which UC has the lowest and highest admissions rates? Produce a numerical summary and an appropriate plot.
@@ -355,15 +355,15 @@ uc_colleges %>%
 ## # A tibble: 8 x 10
 ##   instnm city  stabbr zip   adm_rate sat_avg pcip26 costt4_a c150_4_pooled
 ##   <chr>  <chr> <chr>  <chr>    <dbl>   <dbl>  <dbl>    <dbl>         <dbl>
-## 1 Unive… Rive… CA     92521    0.663    1078  0.149    31494         0.73 
-## 2 Unive… Sant… CA     9506…    0.578    1201  0.193    34608         0.776
-## 3 Unive… Davis CA     9561…    0.423    1218  0.198    33904         0.850
-## 4 Unive… Irvi… CA     92697    0.406    1206  0.107    31198         0.876
-## 5 Unive… Sant… CA     93106    0.358    1281  0.108    34998         0.816
-## 6 Unive… La J… CA     92093    0.357    1324  0.216    31043         0.872
-## 7 Unive… Los … CA     9009…    0.180    1334  0.155    33078         0.911
-## 8 Unive… Berk… CA     94720    0.169    1422  0.105    34924         0.916
-## # … with 1 more variable: pftftug1_ef <dbl>
+## 1 Unive~ Rive~ CA     92521    0.663    1078  0.149    31494         0.73 
+## 2 Unive~ Sant~ CA     9506~    0.578    1201  0.193    34608         0.776
+## 3 Unive~ Davis CA     9561~    0.423    1218  0.198    33904         0.850
+## 4 Unive~ Irvi~ CA     92697    0.406    1206  0.107    31198         0.876
+## 5 Unive~ Sant~ CA     93106    0.358    1281  0.108    34998         0.816
+## 6 Unive~ La J~ CA     92093    0.357    1324  0.216    31043         0.872
+## 7 Unive~ Los ~ CA     9009~    0.180    1334  0.155    33078         0.911
+## 8 Unive~ Berk~ CA     94720    0.169    1422  0.105    34924         0.916
+## # ... with 1 more variable: pftftug1_ef <dbl>
 ```
 
 
@@ -389,15 +389,15 @@ uc_colleges2 %>%
 ## # A tibble: 8 x 11
 ##   univ  campus city  stabbr zip   adm_rate sat_avg pcip26 costt4_a c150_4_pooled
 ##   <chr> <chr>  <chr> <chr>  <chr>    <dbl>   <dbl>  <dbl>    <dbl>         <dbl>
-## 1 Univ… San D… La J… CA     92093    0.357    1324  0.216    31043         0.872
-## 2 Univ… Davis  Davis CA     9561…    0.423    1218  0.198    33904         0.850
-## 3 Univ… Santa… Sant… CA     9506…    0.578    1201  0.193    34608         0.776
-## 4 Univ… Los A… Los … CA     9009…    0.180    1334  0.155    33078         0.911
-## 5 Univ… River… Rive… CA     92521    0.663    1078  0.149    31494         0.73 
-## 6 Univ… Santa… Sant… CA     93106    0.358    1281  0.108    34998         0.816
-## 7 Univ… Irvine Irvi… CA     92697    0.406    1206  0.107    31198         0.876
-## 8 Univ… Berke… Berk… CA     94720    0.169    1422  0.105    34924         0.916
-## # … with 1 more variable: pftftug1_ef <dbl>
+## 1 Univ~ San D~ La J~ CA     92093    0.357    1324  0.216    31043         0.872
+## 2 Univ~ Davis  Davis CA     9561~    0.423    1218  0.198    33904         0.850
+## 3 Univ~ Santa~ Sant~ CA     9506~    0.578    1201  0.193    34608         0.776
+## 4 Univ~ Los A~ Los ~ CA     9009~    0.180    1334  0.155    33078         0.911
+## 5 Univ~ River~ Rive~ CA     92521    0.663    1078  0.149    31494         0.73 
+## 6 Univ~ Santa~ Sant~ CA     93106    0.358    1281  0.108    34998         0.816
+## 7 Univ~ Irvine Irvi~ CA     92697    0.406    1206  0.107    31198         0.876
+## 8 Univ~ Berke~ Berk~ CA     94720    0.169    1422  0.105    34924         0.916
+## # ... with 1 more variable: pftftug1_ef <dbl>
 ```
 
 
