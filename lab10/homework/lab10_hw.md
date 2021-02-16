@@ -1,7 +1,7 @@
 ---
 title: "Lab 10 Homework"
 author: "Please Add Your Name Here"
-date: "2021-02-10"
+date: "2021-02-15"
 output:
   html_document: 
     theme: spacelab
@@ -33,7 +33,7 @@ deserts <- read_csv(here("lab10", "data", "surveys_complete.csv"))
 
 ```
 ## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   record_id = col_double(),
 ##   month = col_double(),
@@ -60,19 +60,19 @@ glimpse(deserts)
 ```
 ## Rows: 34,786
 ## Columns: 13
-## $ record_id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
-## $ month           <dbl> 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,…
-## $ day             <dbl> 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 1…
-## $ year            <dbl> 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977,…
-## $ plot_id         <dbl> 2, 3, 2, 7, 3, 1, 2, 1, 1, 6, 5, 7, 3, 8, 6, 4, 3, 2,…
-## $ species_id      <chr> "NL", "NL", "DM", "DM", "DM", "PF", "PE", "DM", "DM",…
-## $ sex             <chr> "M", "M", "F", "M", "M", "M", "F", "M", "F", "F", "F"…
-## $ hindfoot_length <dbl> 32, 33, 37, 36, 35, 14, NA, 37, 34, 20, 53, 38, 35, N…
-## $ weight          <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ genus           <chr> "Neotoma", "Neotoma", "Dipodomys", "Dipodomys", "Dipo…
-## $ species         <chr> "albigula", "albigula", "merriami", "merriami", "merr…
-## $ taxa            <chr> "Rodent", "Rodent", "Rodent", "Rodent", "Rodent", "Ro…
-## $ plot_type       <chr> "Control", "Long-term Krat Exclosure", "Control", "Ro…
+## $ record_id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ...
+## $ month           <dbl> 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, ...
+## $ day             <dbl> 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,...
+## $ year            <dbl> 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 197...
+## $ plot_id         <dbl> 2, 3, 2, 7, 3, 1, 2, 1, 1, 6, 5, 7, 3, 8, 6, 4, 3, ...
+## $ species_id      <chr> "NL", "NL", "DM", "DM", "DM", "PF", "PE", "DM", "DM...
+## $ sex             <chr> "M", "M", "F", "M", "M", "M", "F", "M", "F", "F", "...
+## $ hindfoot_length <dbl> 32, 33, 37, 36, 35, 14, NA, 37, 34, 20, 53, 38, 35,...
+## $ weight          <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ genus           <chr> "Neotoma", "Neotoma", "Dipodomys", "Dipodomys", "Di...
+## $ species         <chr> "albigula", "albigula", "merriami", "merriami", "me...
+## $ taxa            <chr> "Rodent", "Rodent", "Rodent", "Rodent", "Rodent", "...
+## $ plot_type       <chr> "Control", "Long-term Krat Exclosure", "Control", "...
 ```
 
 
@@ -148,7 +148,7 @@ head(deserts, n=10)
 ##  8         8     7    16  1977       1 DM         M                  37     NA
 ##  9         9     7    16  1977       1 DM         F                  34     NA
 ## 10        10     7    16  1977       6 PF         F                  20     NA
-## # … with 4 more variables: genus <chr>, species <chr>, taxa <chr>,
+## # ... with 4 more variables: genus <chr>, species <chr>, taxa <chr>,
 ## #   plot_type <chr>
 ```
 **The data is tidy and is long**
@@ -195,7 +195,7 @@ deserts %>%
 ##  8 Perognathus     flavus               1597
 ##  9 Peromyscus      eremicus             1299
 ## 10 Neotoma         albigula             1252
-## # … with 38 more rows
+## # ... with 38 more rows
 ```
 
 **Dipodomys merriami was most frequently sampled and Cnemidophorus tigris, Cnemidophorus uniparens, Crotalus scutalatus, Crotalus viridis, Sceloporus clarki, Spermophilus tereticaudus were all sampled the least (once).**
@@ -347,7 +347,7 @@ deserts %>%
 ##  8 Dipodomys    merriami            43.2
 ##  9 Chaetodipus  baileyi             31.7
 ## 10 Onychomys    leucogaster         31.6
-## # … with 15 more rows
+## # ... with 15 more rows
 ```
 
 **Neotoma albigula and Dipodomys spectabilis have the highest average weight**
@@ -372,7 +372,7 @@ deserts2
 ##  8         8     7    16  1977       1 DM         M                  37     NA
 ##  9         9     7    16  1977       1 DM         F                  34     NA
 ## 10        10     7    16  1977       6 PF         F                  20     NA
-## # … with 34,776 more rows, and 5 more variables: genus <chr>, species <chr>,
+## # ... with 34,776 more rows, and 5 more variables: genus <chr>, species <chr>,
 ## #   taxa <chr>, plot_type <chr>, weight_to_hindfoot_ratio <dbl>
 ```
 
