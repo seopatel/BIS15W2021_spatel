@@ -1,7 +1,7 @@
 ---
 title: "Midterm 2"
 author: "Please Add Your Name Here"
-date: "2021-02-18"
+date: "2021-02-22"
 output:
   html_document: 
     theme: spacelab
@@ -432,645 +432,82 @@ life_exp_long
 
 2. (1 point) How many different countries are represented in the data? Provide the total number and their names. Since each data set includes different numbers of countries, you will need to do this for each one.
 
-**show names** 
+
 
 
 ```r
-population %>% 
+population_long %>% 
+  group_by(country) %>% 
   summarize(distinct_country = n_distinct(country))
 ```
 
 ```
-## # A tibble: 1 x 1
-##   distinct_country
-##              <int>
-## 1              195
+## # A tibble: 195 x 2
+##    country             distinct_country
+##  * <chr>                          <int>
+##  1 Afghanistan                        1
+##  2 Albania                            1
+##  3 Algeria                            1
+##  4 Andorra                            1
+##  5 Angola                             1
+##  6 Antigua and Barbuda                1
+##  7 Argentina                          1
+##  8 Armenia                            1
+##  9 Australia                          1
+## 10 Austria                            1
+## # … with 185 more rows
 ```
-
-```r
-tabyl(population, country)
-```
-
-```
-##                         country n     percent
-##                     Afghanistan 1 0.005128205
-##                         Albania 1 0.005128205
-##                         Algeria 1 0.005128205
-##                         Andorra 1 0.005128205
-##                          Angola 1 0.005128205
-##             Antigua and Barbuda 1 0.005128205
-##                       Argentina 1 0.005128205
-##                         Armenia 1 0.005128205
-##                       Australia 1 0.005128205
-##                         Austria 1 0.005128205
-##                      Azerbaijan 1 0.005128205
-##                         Bahamas 1 0.005128205
-##                         Bahrain 1 0.005128205
-##                      Bangladesh 1 0.005128205
-##                        Barbados 1 0.005128205
-##                         Belarus 1 0.005128205
-##                         Belgium 1 0.005128205
-##                          Belize 1 0.005128205
-##                           Benin 1 0.005128205
-##                          Bhutan 1 0.005128205
-##                         Bolivia 1 0.005128205
-##          Bosnia and Herzegovina 1 0.005128205
-##                        Botswana 1 0.005128205
-##                          Brazil 1 0.005128205
-##                          Brunei 1 0.005128205
-##                        Bulgaria 1 0.005128205
-##                    Burkina Faso 1 0.005128205
-##                         Burundi 1 0.005128205
-##                        Cambodia 1 0.005128205
-##                        Cameroon 1 0.005128205
-##                          Canada 1 0.005128205
-##                      Cape Verde 1 0.005128205
-##        Central African Republic 1 0.005128205
-##                            Chad 1 0.005128205
-##                           Chile 1 0.005128205
-##                           China 1 0.005128205
-##                        Colombia 1 0.005128205
-##                         Comoros 1 0.005128205
-##                Congo, Dem. Rep. 1 0.005128205
-##                     Congo, Rep. 1 0.005128205
-##                      Costa Rica 1 0.005128205
-##                   Cote d'Ivoire 1 0.005128205
-##                         Croatia 1 0.005128205
-##                            Cuba 1 0.005128205
-##                          Cyprus 1 0.005128205
-##                  Czech Republic 1 0.005128205
-##                         Denmark 1 0.005128205
-##                        Djibouti 1 0.005128205
-##                        Dominica 1 0.005128205
-##              Dominican Republic 1 0.005128205
-##                         Ecuador 1 0.005128205
-##                           Egypt 1 0.005128205
-##                     El Salvador 1 0.005128205
-##               Equatorial Guinea 1 0.005128205
-##                         Eritrea 1 0.005128205
-##                         Estonia 1 0.005128205
-##                        Eswatini 1 0.005128205
-##                        Ethiopia 1 0.005128205
-##                            Fiji 1 0.005128205
-##                         Finland 1 0.005128205
-##                          France 1 0.005128205
-##                           Gabon 1 0.005128205
-##                          Gambia 1 0.005128205
-##                         Georgia 1 0.005128205
-##                         Germany 1 0.005128205
-##                           Ghana 1 0.005128205
-##                          Greece 1 0.005128205
-##                         Grenada 1 0.005128205
-##                       Guatemala 1 0.005128205
-##                          Guinea 1 0.005128205
-##                   Guinea-Bissau 1 0.005128205
-##                          Guyana 1 0.005128205
-##                           Haiti 1 0.005128205
-##                        Holy See 1 0.005128205
-##                        Honduras 1 0.005128205
-##                         Hungary 1 0.005128205
-##                         Iceland 1 0.005128205
-##                           India 1 0.005128205
-##                       Indonesia 1 0.005128205
-##                            Iran 1 0.005128205
-##                            Iraq 1 0.005128205
-##                         Ireland 1 0.005128205
-##                          Israel 1 0.005128205
-##                           Italy 1 0.005128205
-##                         Jamaica 1 0.005128205
-##                           Japan 1 0.005128205
-##                          Jordan 1 0.005128205
-##                      Kazakhstan 1 0.005128205
-##                           Kenya 1 0.005128205
-##                        Kiribati 1 0.005128205
-##                          Kuwait 1 0.005128205
-##                 Kyrgyz Republic 1 0.005128205
-##                             Lao 1 0.005128205
-##                          Latvia 1 0.005128205
-##                         Lebanon 1 0.005128205
-##                         Lesotho 1 0.005128205
-##                         Liberia 1 0.005128205
-##                           Libya 1 0.005128205
-##                   Liechtenstein 1 0.005128205
-##                       Lithuania 1 0.005128205
-##                      Luxembourg 1 0.005128205
-##                      Madagascar 1 0.005128205
-##                          Malawi 1 0.005128205
-##                        Malaysia 1 0.005128205
-##                        Maldives 1 0.005128205
-##                            Mali 1 0.005128205
-##                           Malta 1 0.005128205
-##                Marshall Islands 1 0.005128205
-##                      Mauritania 1 0.005128205
-##                       Mauritius 1 0.005128205
-##                          Mexico 1 0.005128205
-##           Micronesia, Fed. Sts. 1 0.005128205
-##                         Moldova 1 0.005128205
-##                          Monaco 1 0.005128205
-##                        Mongolia 1 0.005128205
-##                      Montenegro 1 0.005128205
-##                         Morocco 1 0.005128205
-##                      Mozambique 1 0.005128205
-##                         Myanmar 1 0.005128205
-##                         Namibia 1 0.005128205
-##                           Nauru 1 0.005128205
-##                           Nepal 1 0.005128205
-##                     Netherlands 1 0.005128205
-##                     New Zealand 1 0.005128205
-##                       Nicaragua 1 0.005128205
-##                           Niger 1 0.005128205
-##                         Nigeria 1 0.005128205
-##                     North Korea 1 0.005128205
-##                 North Macedonia 1 0.005128205
-##                          Norway 1 0.005128205
-##                            Oman 1 0.005128205
-##                        Pakistan 1 0.005128205
-##                           Palau 1 0.005128205
-##                       Palestine 1 0.005128205
-##                          Panama 1 0.005128205
-##                Papua New Guinea 1 0.005128205
-##                        Paraguay 1 0.005128205
-##                            Peru 1 0.005128205
-##                     Philippines 1 0.005128205
-##                          Poland 1 0.005128205
-##                        Portugal 1 0.005128205
-##                           Qatar 1 0.005128205
-##                         Romania 1 0.005128205
-##                          Russia 1 0.005128205
-##                          Rwanda 1 0.005128205
-##                           Samoa 1 0.005128205
-##                      San Marino 1 0.005128205
-##           Sao Tome and Principe 1 0.005128205
-##                    Saudi Arabia 1 0.005128205
-##                         Senegal 1 0.005128205
-##                          Serbia 1 0.005128205
-##                      Seychelles 1 0.005128205
-##                    Sierra Leone 1 0.005128205
-##                       Singapore 1 0.005128205
-##                 Slovak Republic 1 0.005128205
-##                        Slovenia 1 0.005128205
-##                 Solomon Islands 1 0.005128205
-##                         Somalia 1 0.005128205
-##                    South Africa 1 0.005128205
-##                     South Korea 1 0.005128205
-##                     South Sudan 1 0.005128205
-##                           Spain 1 0.005128205
-##                       Sri Lanka 1 0.005128205
-##             St. Kitts and Nevis 1 0.005128205
-##                       St. Lucia 1 0.005128205
-##  St. Vincent and the Grenadines 1 0.005128205
-##                           Sudan 1 0.005128205
-##                        Suriname 1 0.005128205
-##                          Sweden 1 0.005128205
-##                     Switzerland 1 0.005128205
-##                           Syria 1 0.005128205
-##                      Tajikistan 1 0.005128205
-##                        Tanzania 1 0.005128205
-##                        Thailand 1 0.005128205
-##                     Timor-Leste 1 0.005128205
-##                            Togo 1 0.005128205
-##                           Tonga 1 0.005128205
-##             Trinidad and Tobago 1 0.005128205
-##                         Tunisia 1 0.005128205
-##                          Turkey 1 0.005128205
-##                    Turkmenistan 1 0.005128205
-##                          Tuvalu 1 0.005128205
-##                          Uganda 1 0.005128205
-##                         Ukraine 1 0.005128205
-##            United Arab Emirates 1 0.005128205
-##                  United Kingdom 1 0.005128205
-##                   United States 1 0.005128205
-##                         Uruguay 1 0.005128205
-##                      Uzbekistan 1 0.005128205
-##                         Vanuatu 1 0.005128205
-##                       Venezuela 1 0.005128205
-##                         Vietnam 1 0.005128205
-##                           Yemen 1 0.005128205
-##                          Zambia 1 0.005128205
-##                        Zimbabwe 1 0.005128205
-```
+**There are 195 distinct countries represented in the population data**
 
 
 ```r
-income %>% 
+income_long %>% 
+  group_by(country) %>% 
   summarize(distinct_country = n_distinct(country))
 ```
 
 ```
-## # A tibble: 1 x 1
-##   distinct_country
-##              <int>
-## 1              193
+## # A tibble: 193 x 2
+##    country             distinct_country
+##  * <chr>                          <int>
+##  1 Afghanistan                        1
+##  2 Albania                            1
+##  3 Algeria                            1
+##  4 Andorra                            1
+##  5 Angola                             1
+##  6 Antigua and Barbuda                1
+##  7 Argentina                          1
+##  8 Armenia                            1
+##  9 Australia                          1
+## 10 Austria                            1
+## # … with 183 more rows
 ```
-
-```r
-tabyl(income, country)
-```
-
-```
-##                         country n     percent
-##                     Afghanistan 1 0.005181347
-##                         Albania 1 0.005181347
-##                         Algeria 1 0.005181347
-##                         Andorra 1 0.005181347
-##                          Angola 1 0.005181347
-##             Antigua and Barbuda 1 0.005181347
-##                       Argentina 1 0.005181347
-##                         Armenia 1 0.005181347
-##                       Australia 1 0.005181347
-##                         Austria 1 0.005181347
-##                      Azerbaijan 1 0.005181347
-##                         Bahamas 1 0.005181347
-##                         Bahrain 1 0.005181347
-##                      Bangladesh 1 0.005181347
-##                        Barbados 1 0.005181347
-##                         Belarus 1 0.005181347
-##                         Belgium 1 0.005181347
-##                          Belize 1 0.005181347
-##                           Benin 1 0.005181347
-##                          Bhutan 1 0.005181347
-##                         Bolivia 1 0.005181347
-##          Bosnia and Herzegovina 1 0.005181347
-##                        Botswana 1 0.005181347
-##                          Brazil 1 0.005181347
-##                          Brunei 1 0.005181347
-##                        Bulgaria 1 0.005181347
-##                    Burkina Faso 1 0.005181347
-##                         Burundi 1 0.005181347
-##                        Cambodia 1 0.005181347
-##                        Cameroon 1 0.005181347
-##                          Canada 1 0.005181347
-##                      Cape Verde 1 0.005181347
-##        Central African Republic 1 0.005181347
-##                            Chad 1 0.005181347
-##                           Chile 1 0.005181347
-##                           China 1 0.005181347
-##                        Colombia 1 0.005181347
-##                         Comoros 1 0.005181347
-##                Congo, Dem. Rep. 1 0.005181347
-##                     Congo, Rep. 1 0.005181347
-##                      Costa Rica 1 0.005181347
-##                   Cote d'Ivoire 1 0.005181347
-##                         Croatia 1 0.005181347
-##                            Cuba 1 0.005181347
-##                          Cyprus 1 0.005181347
-##                  Czech Republic 1 0.005181347
-##                         Denmark 1 0.005181347
-##                        Djibouti 1 0.005181347
-##                        Dominica 1 0.005181347
-##              Dominican Republic 1 0.005181347
-##                         Ecuador 1 0.005181347
-##                           Egypt 1 0.005181347
-##                     El Salvador 1 0.005181347
-##               Equatorial Guinea 1 0.005181347
-##                         Eritrea 1 0.005181347
-##                         Estonia 1 0.005181347
-##                        Eswatini 1 0.005181347
-##                        Ethiopia 1 0.005181347
-##                            Fiji 1 0.005181347
-##                         Finland 1 0.005181347
-##                          France 1 0.005181347
-##                           Gabon 1 0.005181347
-##                          Gambia 1 0.005181347
-##                         Georgia 1 0.005181347
-##                         Germany 1 0.005181347
-##                           Ghana 1 0.005181347
-##                          Greece 1 0.005181347
-##                         Grenada 1 0.005181347
-##                       Guatemala 1 0.005181347
-##                          Guinea 1 0.005181347
-##                   Guinea-Bissau 1 0.005181347
-##                          Guyana 1 0.005181347
-##                           Haiti 1 0.005181347
-##                        Honduras 1 0.005181347
-##                         Hungary 1 0.005181347
-##                         Iceland 1 0.005181347
-##                           India 1 0.005181347
-##                       Indonesia 1 0.005181347
-##                            Iran 1 0.005181347
-##                            Iraq 1 0.005181347
-##                         Ireland 1 0.005181347
-##                          Israel 1 0.005181347
-##                           Italy 1 0.005181347
-##                         Jamaica 1 0.005181347
-##                           Japan 1 0.005181347
-##                          Jordan 1 0.005181347
-##                      Kazakhstan 1 0.005181347
-##                           Kenya 1 0.005181347
-##                        Kiribati 1 0.005181347
-##                          Kuwait 1 0.005181347
-##                 Kyrgyz Republic 1 0.005181347
-##                             Lao 1 0.005181347
-##                          Latvia 1 0.005181347
-##                         Lebanon 1 0.005181347
-##                         Lesotho 1 0.005181347
-##                         Liberia 1 0.005181347
-##                           Libya 1 0.005181347
-##                       Lithuania 1 0.005181347
-##                      Luxembourg 1 0.005181347
-##                      Madagascar 1 0.005181347
-##                          Malawi 1 0.005181347
-##                        Malaysia 1 0.005181347
-##                        Maldives 1 0.005181347
-##                            Mali 1 0.005181347
-##                           Malta 1 0.005181347
-##                Marshall Islands 1 0.005181347
-##                      Mauritania 1 0.005181347
-##                       Mauritius 1 0.005181347
-##                          Mexico 1 0.005181347
-##           Micronesia, Fed. Sts. 1 0.005181347
-##                         Moldova 1 0.005181347
-##                          Monaco 1 0.005181347
-##                        Mongolia 1 0.005181347
-##                      Montenegro 1 0.005181347
-##                         Morocco 1 0.005181347
-##                      Mozambique 1 0.005181347
-##                         Myanmar 1 0.005181347
-##                         Namibia 1 0.005181347
-##                           Nauru 1 0.005181347
-##                           Nepal 1 0.005181347
-##                     Netherlands 1 0.005181347
-##                     New Zealand 1 0.005181347
-##                       Nicaragua 1 0.005181347
-##                           Niger 1 0.005181347
-##                         Nigeria 1 0.005181347
-##                     North Korea 1 0.005181347
-##                 North Macedonia 1 0.005181347
-##                          Norway 1 0.005181347
-##                            Oman 1 0.005181347
-##                        Pakistan 1 0.005181347
-##                           Palau 1 0.005181347
-##                       Palestine 1 0.005181347
-##                          Panama 1 0.005181347
-##                Papua New Guinea 1 0.005181347
-##                        Paraguay 1 0.005181347
-##                            Peru 1 0.005181347
-##                     Philippines 1 0.005181347
-##                          Poland 1 0.005181347
-##                        Portugal 1 0.005181347
-##                           Qatar 1 0.005181347
-##                         Romania 1 0.005181347
-##                          Russia 1 0.005181347
-##                          Rwanda 1 0.005181347
-##                           Samoa 1 0.005181347
-##                      San Marino 1 0.005181347
-##           Sao Tome and Principe 1 0.005181347
-##                    Saudi Arabia 1 0.005181347
-##                         Senegal 1 0.005181347
-##                          Serbia 1 0.005181347
-##                      Seychelles 1 0.005181347
-##                    Sierra Leone 1 0.005181347
-##                       Singapore 1 0.005181347
-##                 Slovak Republic 1 0.005181347
-##                        Slovenia 1 0.005181347
-##                 Solomon Islands 1 0.005181347
-##                         Somalia 1 0.005181347
-##                    South Africa 1 0.005181347
-##                     South Korea 1 0.005181347
-##                     South Sudan 1 0.005181347
-##                           Spain 1 0.005181347
-##                       Sri Lanka 1 0.005181347
-##             St. Kitts and Nevis 1 0.005181347
-##                       St. Lucia 1 0.005181347
-##  St. Vincent and the Grenadines 1 0.005181347
-##                           Sudan 1 0.005181347
-##                        Suriname 1 0.005181347
-##                          Sweden 1 0.005181347
-##                     Switzerland 1 0.005181347
-##                           Syria 1 0.005181347
-##                      Tajikistan 1 0.005181347
-##                        Tanzania 1 0.005181347
-##                        Thailand 1 0.005181347
-##                     Timor-Leste 1 0.005181347
-##                            Togo 1 0.005181347
-##                           Tonga 1 0.005181347
-##             Trinidad and Tobago 1 0.005181347
-##                         Tunisia 1 0.005181347
-##                          Turkey 1 0.005181347
-##                    Turkmenistan 1 0.005181347
-##                          Tuvalu 1 0.005181347
-##                          Uganda 1 0.005181347
-##                         Ukraine 1 0.005181347
-##            United Arab Emirates 1 0.005181347
-##                  United Kingdom 1 0.005181347
-##                   United States 1 0.005181347
-##                         Uruguay 1 0.005181347
-##                      Uzbekistan 1 0.005181347
-##                         Vanuatu 1 0.005181347
-##                       Venezuela 1 0.005181347
-##                         Vietnam 1 0.005181347
-##                           Yemen 1 0.005181347
-##                          Zambia 1 0.005181347
-##                        Zimbabwe 1 0.005181347
-```
+**There are 193 distinct countries represented in the income data**
 
 
 ```r
-life_expectancy %>% 
+life_exp_long %>% 
+  group_by(country) %>% 
   summarize(distinct_country = n_distinct(country))
 ```
 
 ```
-## # A tibble: 1 x 1
-##   distinct_country
-##              <int>
-## 1              187
+## # A tibble: 187 x 2
+##    country             distinct_country
+##  * <chr>                          <int>
+##  1 Afghanistan                        1
+##  2 Albania                            1
+##  3 Algeria                            1
+##  4 Andorra                            1
+##  5 Angola                             1
+##  6 Antigua and Barbuda                1
+##  7 Argentina                          1
+##  8 Armenia                            1
+##  9 Australia                          1
+## 10 Austria                            1
+## # … with 177 more rows
 ```
-
-```r
-tabyl(life_expectancy, country)
-```
-
-```
-##                         country n     percent
-##                     Afghanistan 1 0.005347594
-##                         Albania 1 0.005347594
-##                         Algeria 1 0.005347594
-##                         Andorra 1 0.005347594
-##                          Angola 1 0.005347594
-##             Antigua and Barbuda 1 0.005347594
-##                       Argentina 1 0.005347594
-##                         Armenia 1 0.005347594
-##                       Australia 1 0.005347594
-##                         Austria 1 0.005347594
-##                      Azerbaijan 1 0.005347594
-##                         Bahamas 1 0.005347594
-##                         Bahrain 1 0.005347594
-##                      Bangladesh 1 0.005347594
-##                        Barbados 1 0.005347594
-##                         Belarus 1 0.005347594
-##                         Belgium 1 0.005347594
-##                          Belize 1 0.005347594
-##                           Benin 1 0.005347594
-##                          Bhutan 1 0.005347594
-##                         Bolivia 1 0.005347594
-##          Bosnia and Herzegovina 1 0.005347594
-##                        Botswana 1 0.005347594
-##                          Brazil 1 0.005347594
-##                          Brunei 1 0.005347594
-##                        Bulgaria 1 0.005347594
-##                    Burkina Faso 1 0.005347594
-##                         Burundi 1 0.005347594
-##                        Cambodia 1 0.005347594
-##                        Cameroon 1 0.005347594
-##                          Canada 1 0.005347594
-##                      Cape Verde 1 0.005347594
-##        Central African Republic 1 0.005347594
-##                            Chad 1 0.005347594
-##                           Chile 1 0.005347594
-##                           China 1 0.005347594
-##                        Colombia 1 0.005347594
-##                         Comoros 1 0.005347594
-##                Congo, Dem. Rep. 1 0.005347594
-##                     Congo, Rep. 1 0.005347594
-##                      Costa Rica 1 0.005347594
-##                   Cote d'Ivoire 1 0.005347594
-##                         Croatia 1 0.005347594
-##                            Cuba 1 0.005347594
-##                          Cyprus 1 0.005347594
-##                  Czech Republic 1 0.005347594
-##                         Denmark 1 0.005347594
-##                        Djibouti 1 0.005347594
-##                        Dominica 1 0.005347594
-##              Dominican Republic 1 0.005347594
-##                         Ecuador 1 0.005347594
-##                           Egypt 1 0.005347594
-##                     El Salvador 1 0.005347594
-##               Equatorial Guinea 1 0.005347594
-##                         Eritrea 1 0.005347594
-##                         Estonia 1 0.005347594
-##                        Eswatini 1 0.005347594
-##                        Ethiopia 1 0.005347594
-##                            Fiji 1 0.005347594
-##                         Finland 1 0.005347594
-##                          France 1 0.005347594
-##                           Gabon 1 0.005347594
-##                          Gambia 1 0.005347594
-##                         Georgia 1 0.005347594
-##                         Germany 1 0.005347594
-##                           Ghana 1 0.005347594
-##                          Greece 1 0.005347594
-##                         Grenada 1 0.005347594
-##                       Guatemala 1 0.005347594
-##                          Guinea 1 0.005347594
-##                   Guinea-Bissau 1 0.005347594
-##                          Guyana 1 0.005347594
-##                           Haiti 1 0.005347594
-##                        Honduras 1 0.005347594
-##                         Hungary 1 0.005347594
-##                         Iceland 1 0.005347594
-##                           India 1 0.005347594
-##                       Indonesia 1 0.005347594
-##                            Iran 1 0.005347594
-##                            Iraq 1 0.005347594
-##                         Ireland 1 0.005347594
-##                          Israel 1 0.005347594
-##                           Italy 1 0.005347594
-##                         Jamaica 1 0.005347594
-##                           Japan 1 0.005347594
-##                          Jordan 1 0.005347594
-##                      Kazakhstan 1 0.005347594
-##                           Kenya 1 0.005347594
-##                        Kiribati 1 0.005347594
-##                          Kuwait 1 0.005347594
-##                 Kyrgyz Republic 1 0.005347594
-##                             Lao 1 0.005347594
-##                          Latvia 1 0.005347594
-##                         Lebanon 1 0.005347594
-##                         Lesotho 1 0.005347594
-##                         Liberia 1 0.005347594
-##                           Libya 1 0.005347594
-##                       Lithuania 1 0.005347594
-##                      Luxembourg 1 0.005347594
-##                      Madagascar 1 0.005347594
-##                          Malawi 1 0.005347594
-##                        Malaysia 1 0.005347594
-##                        Maldives 1 0.005347594
-##                            Mali 1 0.005347594
-##                           Malta 1 0.005347594
-##                Marshall Islands 1 0.005347594
-##                      Mauritania 1 0.005347594
-##                       Mauritius 1 0.005347594
-##                          Mexico 1 0.005347594
-##           Micronesia, Fed. Sts. 1 0.005347594
-##                         Moldova 1 0.005347594
-##                        Mongolia 1 0.005347594
-##                      Montenegro 1 0.005347594
-##                         Morocco 1 0.005347594
-##                      Mozambique 1 0.005347594
-##                         Myanmar 1 0.005347594
-##                         Namibia 1 0.005347594
-##                           Nepal 1 0.005347594
-##                     Netherlands 1 0.005347594
-##                     New Zealand 1 0.005347594
-##                       Nicaragua 1 0.005347594
-##                           Niger 1 0.005347594
-##                         Nigeria 1 0.005347594
-##                     North Korea 1 0.005347594
-##                 North Macedonia 1 0.005347594
-##                          Norway 1 0.005347594
-##                            Oman 1 0.005347594
-##                        Pakistan 1 0.005347594
-##                       Palestine 1 0.005347594
-##                          Panama 1 0.005347594
-##                Papua New Guinea 1 0.005347594
-##                        Paraguay 1 0.005347594
-##                            Peru 1 0.005347594
-##                     Philippines 1 0.005347594
-##                          Poland 1 0.005347594
-##                        Portugal 1 0.005347594
-##                           Qatar 1 0.005347594
-##                         Romania 1 0.005347594
-##                          Russia 1 0.005347594
-##                          Rwanda 1 0.005347594
-##                           Samoa 1 0.005347594
-##           Sao Tome and Principe 1 0.005347594
-##                    Saudi Arabia 1 0.005347594
-##                         Senegal 1 0.005347594
-##                          Serbia 1 0.005347594
-##                      Seychelles 1 0.005347594
-##                    Sierra Leone 1 0.005347594
-##                       Singapore 1 0.005347594
-##                 Slovak Republic 1 0.005347594
-##                        Slovenia 1 0.005347594
-##                 Solomon Islands 1 0.005347594
-##                         Somalia 1 0.005347594
-##                    South Africa 1 0.005347594
-##                     South Korea 1 0.005347594
-##                     South Sudan 1 0.005347594
-##                           Spain 1 0.005347594
-##                       Sri Lanka 1 0.005347594
-##                       St. Lucia 1 0.005347594
-##  St. Vincent and the Grenadines 1 0.005347594
-##                           Sudan 1 0.005347594
-##                        Suriname 1 0.005347594
-##                          Sweden 1 0.005347594
-##                     Switzerland 1 0.005347594
-##                           Syria 1 0.005347594
-##                      Tajikistan 1 0.005347594
-##                        Tanzania 1 0.005347594
-##                        Thailand 1 0.005347594
-##                     Timor-Leste 1 0.005347594
-##                            Togo 1 0.005347594
-##                           Tonga 1 0.005347594
-##             Trinidad and Tobago 1 0.005347594
-##                         Tunisia 1 0.005347594
-##                          Turkey 1 0.005347594
-##                    Turkmenistan 1 0.005347594
-##                          Uganda 1 0.005347594
-##                         Ukraine 1 0.005347594
-##            United Arab Emirates 1 0.005347594
-##                  United Kingdom 1 0.005347594
-##                   United States 1 0.005347594
-##                         Uruguay 1 0.005347594
-##                      Uzbekistan 1 0.005347594
-##                         Vanuatu 1 0.005347594
-##                       Venezuela 1 0.005347594
-##                         Vietnam 1 0.005347594
-##                           Yemen 1 0.005347594
-##                          Zambia 1 0.005347594
-##                        Zimbabwe 1 0.005347594
-```
+**There are 187 distinct countries in the life expectancy data**
 
 ## Life Expectancy  
 
@@ -1078,7 +515,6 @@ tabyl(life_expectancy, country)
 
 Highest
 
-**Andorra has the highest average life expectancy from 1920-2020**
 
 ```r
 life_exp_long %>% 
@@ -1104,15 +540,65 @@ life_exp_long %>%
 ## 10 Canada              71.8
 ## # … with 177 more rows
 ```
-Lowest
 
-**Central African Republic has the lowest life expectancy from 1920-2020**
+```r
+life_exp_long %>% 
+  filter(year>="1920", year <= "2020") %>% 
+  filter(country == "Andorra") 
+```
+
+```
+## # A tibble: 101 x 3
+##    country year  life_expectancy
+##    <chr>   <chr>           <dbl>
+##  1 Andorra 1920               NA
+##  2 Andorra 1921               NA
+##  3 Andorra 1922               NA
+##  4 Andorra 1923               NA
+##  5 Andorra 1924               NA
+##  6 Andorra 1925               NA
+##  7 Andorra 1926               NA
+##  8 Andorra 1927               NA
+##  9 Andorra 1928               NA
+## 10 Andorra 1929               NA
+## # … with 91 more rows
+```
 
 ```r
 life_exp_long %>% 
   filter(year>= "1920", year<= "2020") %>% 
   group_by(country) %>% 
-  summarize(avg_life_exp= mean(life_expectancy, na.rm=T)) %>% 
+  summarize(avg_life_exp = mean(life_expectancy)) %>% 
+  arrange(desc(avg_life_exp))
+```
+
+```
+## # A tibble: 187 x 2
+##    country        avg_life_exp
+##    <chr>                 <dbl>
+##  1 Sweden                 73.5
+##  2 Norway                 73.2
+##  3 Netherlands            73.0
+##  4 Iceland                72.9
+##  5 Australia              72.7
+##  6 Switzerland            72.7
+##  7 Denmark                71.9
+##  8 Canada                 71.8
+##  9 New Zealand            71.4
+## 10 United Kingdom         71.1
+## # … with 177 more rows
+```
+**Andorra has the highest average life expectancy from 1920-2020, BUT this is misleading because there are many NA's in the data from 1920-1970. It would be more accurate to say the Sweden has the highest average life expectancy from 1920-2020 instead.**
+
+
+Lowest
+
+
+```r
+life_exp_long %>% 
+  filter(year>= "1920", year<= "2020") %>% 
+  group_by(country) %>% 
+  summarize(avg_life_exp= mean(life_expectancy)) %>% 
   arrange((avg_life_exp))
 ```
 
@@ -1132,10 +618,10 @@ life_exp_long %>%
 ## 10 Yemen                            43.6
 ## # … with 177 more rows
 ```
+**Central African Republic has the lowest life expectancy from 1920-2020**
+
 
 4. (3 points) Although we can see which country has the highest life expectancy for the past 100 years, we don't know which countries have changed the most. What are the top 5 countries that have experienced the biggest improvement in life expectancy between 1920-2020?
-
-**The top 5 countries that have experienced the biggest improvement in life expectancy between 1920-2020 are Kuwait, South Korea, Nicaragua, Iran, and Qatar.**
 
 
 ```r
@@ -1161,9 +647,10 @@ life_expectancy %>%
 ## 10 Iran                       51.2
 ## # … with 177 more rows
 ```
+**The top 5 countries that have experienced the biggest improvement in life expectancy between 1920-2020 are Kuwait, Kyrgyz Republic, Turkmenistan, South Korea, and Tajikistan.**
+
 
 5. (3 points) Make a plot that shows the change over the past 100 years for the country with the biggest improvement in life expectancy. Be sure to add appropriate aesthetics to make the plot clean and clear. Once you have made the plot, do a little internet searching and see if you can discover what historical event may have contributed to this remarkable change.  
-
 
 
 ```r
@@ -1171,15 +658,21 @@ life_exp_long %>%
   filter(year >= 1920 & year <= 2020) %>%
   filter(country == "Kuwait") %>% 
   ggplot(aes(x=year, y=life_expectancy, group = 1)) +
-  geom_line()
+  geom_line() +
+  geom_point()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1, size = 8), plot.title = element_text(size = rel(1), hjust = 0.5))+
+  scale_x_discrete(breaks=c(1920, 1925, 1930, 1935, 1940, 1945, 1950, 1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020)) +
+  labs(x = "Year",
+       y = "Life Expectancy (years)",
+       title = "Life Expectancy in Kuwait (1920 - 2020)")
 ```
 
-![](midterm_2_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](midterm_2_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 ## Population Growth
 6. (3 points) Which 5 countries have had the highest population growth over the past 100 years (1920-2020)?
 
-**India, China, Indonesia, United States, Pakistan**
+
 
 ```r
 population %>% 
@@ -1205,6 +698,9 @@ population %>%
 ## # … with 185 more rows
 ```
 
+**India, China, Indonesia, United States, and Pakistan had the highest population growth over the past 100 years (1920-2020)**
+
+
 7. (4 points) Produce a plot that shows the 5 countries that have had the highest population growth over the past 100 years (1920-2020). Which countries appear to have had exponential growth?  
 
 
@@ -1214,17 +710,26 @@ population_long %>%
   filter(year>=1920, year<=2020) %>% 
   group_by(country) %>% 
   filter(country == "India" | country== "China" | country == "Indonesia" | country == "United States" | country == "Pakistan")%>% 
-  ggplot(aes(x=year, y=population, group = country, color = country)) +geom_line()
+  ggplot(aes(x=year, y=population, group = country, color = country)) +
+  geom_line()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1, size = 8), plot.title = element_text(size = rel(1), hjust = 0.5))+
+  scale_x_discrete(breaks=c(1920, 1925, 1930, 1935, 1940, 1945, 1950, 1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020)) +
+  labs(x = "Year",
+       y = "Population",
+       title = "Population Growth of Top Five Countries (1920 - 2020)")
 ```
 
-![](midterm_2_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+![](midterm_2_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+
+**India and China appear to have had exponential growth in population**
+
 
 ## Income
 The units used for income are gross domestic product per person adjusted for differences in purchasing power in international dollars.
 
 8. (4 points) As in the previous questions, which countries have experienced the biggest growth in per person GDP. Show this as a table and then plot the changes for the top 5 countries. With a bit of research, you should be able to explain the dramatic downturns of the wealthiest economies that occurred during the 1980's.
 
-**Qatar, Luxembourg, Singapore, Brunei, Ireland**
+
 
 ```r
 income %>% 
@@ -1249,16 +754,27 @@ income %>%
 ## 10 San Marino                   54620
 ## # … with 183 more rows
 ```
+**Qatar, Luxembourg, Singapore, Brunei, and Ireland have experienced the biggest growth in per person GDP from 1920-2020**
+
+
 
 ```r
 income_long %>% 
   filter(year>=1920, year<=2020) %>% 
   group_by(country) %>% 
   filter(country == "Qatar" | country== "Luxembourg" | country == "Singapore" | country == "Brunei" | country == "Ireland")%>% 
-  ggplot(aes(x=year, y=income, group = country, color = country)) +geom_line()
+  ggplot(aes(x=year, y=income, group = country, color = country)) +
+  geom_line() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1, size = 8), plot.title = element_text(size = rel(1), hjust = 0.5))+
+  scale_x_discrete(breaks=c(1920, 1925, 1930, 1935, 1940, 1945, 1950, 1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020)) +
+  labs(x = "Year",
+       y = "GDP per Capita",
+       title = "GDP per Capita of Top Five Countries (1920 - 2020)")
 ```
 
-![](midterm_2_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+![](midterm_2_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+
+**The dips in wealth are due to the recession from 1980-1982, likely caused by the 1979 energy crisis**
 
 9. (3 points) Create three new objects that restrict each data set (life expectancy, population, income) to the years 1920-2020. Hint: I suggest doing this with the long form of your data. Once this is done, merge all three data sets using the code I provide below. You may need to adjust the code depending on how you have named your objects. I called mine `life_expectancy_100`, `population_100`, and `income_100`. For some of you, learning these `joins` will be important for your project.  
 
@@ -1309,3 +825,19 @@ gapminder_join
 
 10. (4 points) Use the joined data to perform an analysis of your choice. The analysis should include a comparison between two or more of the variables `life_expectancy`, `population`, or `income.`
 
+
+```r
+gapminder2 <- gapminder_join %>% 
+  group_by(country) %>% 
+  filter(country == "India" | country== "China" | country == "Indonesia" | country == "United States" | country == "Pakistan")%>% 
+  ggplot(aes(x=life_expectancy, y=income, group = country, color = country)) +
+  geom_line()+
+  theme(axis.text.x = element_text(angle = 60, hjust = 1, size = 8), plot.title = element_text(size = rel(1), hjust = 0.5))+
+  labs(x = "GDP per Capita", y = "Life Expectancy", 
+       title = "Life Expectancy vs GDP per Captia for Top 5 Most Populated Countries")
+gapminder2
+```
+
+![](midterm_2_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
+
+It looks like the life expectancy exponentially increases with higher income. 
