@@ -57,7 +57,7 @@ names(uc_admit)
 
 **2. The president of UC has asked you to build a shiny app that shows admissions by ethnicity across all UC campuses. Your app should allow users to explore year, campus, and admit category as interactive variables. Use shiny dashboard and try to incorporate the aesthetics you have learned in ggplot to make the app neat and clean.**
 
-**Version 1: You can see ethnicity on the x axis and then can select academic year, category, or campus **
+**Version 1: You can see ethnicity on the x axis and then can select academic year, category, or campus**
 
 ```{r}
 uc_admit$academic_yr <- as.factor(uc_admit$academic_yr)
