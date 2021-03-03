@@ -104,6 +104,11 @@ life_exp_long %>%
   group_by(country) %>% 
   summarize(distinct_country = n_distinct(country))
 ```
+You might consider this next time...
+```{r}
+n_distinct(life_exp_long$country)
+```
+
 **There are 187 distinct countries in the life expectancy data**
 
 ## Life Expectancy  
@@ -156,7 +161,10 @@ life_expectancy %>%
 ```
 **The top 5 countries that have experienced the biggest improvement in life expectancy between 1920-2020 are Kuwait, Kyrgyz Republic, Turkmenistan, South Korea, and Tajikistan.**
 
-
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 5. (3 points) Make a plot that shows the change over the past 100 years for the country with the biggest improvement in life expectancy. Be sure to add appropriate aesthetics to make the plot clean and clear. Once you have made the plot, do a little internet searching and see if you can discover what historical event may have contributed to this remarkable change.  
 
 ```{r}
@@ -173,6 +181,7 @@ life_exp_long %>%
        title = "Life Expectancy in Kuwait (1920 - 2020)")
 
 ```
+</div>
 
 ## Population Growth
 6. (3 points) Which 5 countries have had the highest population growth over the past 100 years (1920-2020)?
