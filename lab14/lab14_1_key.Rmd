@@ -272,10 +272,10 @@ for (i in 1:length(data_files3)){
 ### example 4: Looping over files for basic genetic analysis
 [Bioconductor](https://www.bioconductor.org/) project is an open source software repository that hosts a wide range of statistical tools developed in the R programming environment. Please use standard R installation procedures to install the BiocManager package and then install "ShortRead" and "Biostrings". 
 ```{r message=FALSE, warning=FALSE}
-# if (!requireNamespace("BiocManager", quietly = TRUE))
-#     install.packages("BiocManager")
-# BiocManager::install()                            # To install core packages or update installed packages
-# BiocManager::install(c("ShortRead", "Biostrings"))# Install specific packages
+ #if (!requireNamespace("BiocManager", quietly = TRUE))
+  #   install.packages("BiocManager")
+ #aBiocManager::install()                            # To install core packages or update installed packages
+ #BiocManager::install(c("ShortRead", "Biostrings"))# Install specific packages
 library(ShortRead)
 library(Biostrings)
 ```

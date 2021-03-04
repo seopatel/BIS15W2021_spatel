@@ -67,9 +67,11 @@ plot(sug)
 
 Individual parts of the above plot may be obtained as follows.
 ```{r}
-#?plotMissing
+#?plotMissing #indicates missing data in the plot 
 plotMissing(sug, main="")
+# x=chromosome markers, y= mouse ID
 plotMissing(sug, main="", reorder=1)
+# sometimes scientists only genotype animals with more apparent phenotype. This is important for hw
 #?plotMap
 plotMap(sug)
 plotMap(sug,show.marker.names=TRUE)
@@ -106,7 +108,7 @@ We first calculate the QTL genotype probabilities, given the observed marker dat
 ```{r}
 sug <- calc.genoprob(sug, step=1)
 out.em <- scanone(sug)
-out.em2 <- scanone(sug, pheno.col=1:4)
+out.em2 <- scanone(sug, pheno.col=1:4)#calculates LOD fora ll quanittative phenotypes
 ```
 The output has “class” "scanone". The summary function is passed to the function summary.scanone, and gives the maximum LOD score on each chromosome.
 ```{r}
@@ -115,7 +117,7 @@ summary(out.em2)
 ```
 Alternatively, we can give a threshold, e.g., to only see those chromosomes with LOD > 3.
 ```{r}
-summary(out.em, threshold=3)
+summary(out.em, threshold=3) # 1/1000 of the probability you will get this specific phenotype (usually just use 3)
 ```
 We can plot the results as follows.
 ```{r}
@@ -127,7 +129,7 @@ plot(out.em, chr=c(7,15), ylab="LOD Score")
 ### iplotScanone
 iplotScanone creates an interactive chart with LOD curves from a genome scan linked to estimated QTL effects. If you provide just the output from scanone, the only interactivity is that hovering over marker positions on the LOD curves will give information about the marker name, position, and LOD score.
 ```{r}
-iplotScanone(out.em)
+iplotScanone(out.em) # make interactive plot
 ```
 You can use the chr to plot only selected chromosomes.
 ```{r}
